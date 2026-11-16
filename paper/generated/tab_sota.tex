@@ -1,0 +1,12 @@
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+ & \multicolumn{3}{c}{Adult} & \multicolumn{3}{c}{$10^6$ records}\\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+System & Q3 & Q4 & Q5 & Q3 & Q4 & Q5\\
+\midrule
+SCQL 1.0 (measured) & 11.0 & 755 & 585 & 103 & 2078 & 929\\
+\textbf{\sys{}} & 155 & 86.4 & 63.0 & 2189 & 911 & 212\\
+Map split & 153 & 119 & 61.8 & 2314 & 971 & 285\\
+3PC-RSS & 249 & 277 & 280 & 2581 & 2689 & 2700\\
+\bottomrule
+\end{tabular}

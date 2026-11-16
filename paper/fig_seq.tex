@@ -1,0 +1,40 @@
+% Fig. 2 -- message sequence of a three-predicate AVG query (TikZ).
+% Every message label sits in the gap between the proxy lifeline (x=0) and
+% the first provider lifeline (x=1.65), so no label crosses any line.
+\begin{tikzpicture}[font=\scriptsize, >={Stealth[length=1.7mm]},
+  life/.style={draw=gray!60, thin, dash pattern=on 1.2pt off 1.2pt},
+  msg/.style={->, semithick, blue!60!black},
+  ret/.style={->, semithick, red!55!black},
+  ml/.style={anchor=south, inner sep=1.2pt, text=blue!60!black},
+  rl/.style={anchor=south, inner sep=1.2pt, text=red!55!black},
+  head/.style={draw, fill=gray!8, rounded corners=1pt, minimum width=7mm, inner sep=1.5pt, font=\scriptsize\bfseries}]
+\newcommand{\lanes}[1]{%
+  \foreach \n/\x in {P/0, S2/1.65, S1/2.65, S0/3.65} {\node[head] at (\x,0) {\n}; \draw[life] (\x,-0.2) -- (\x,-#1);}}
+\newcommand{\lbl}[3]{\node[#1] at (0.825,#2) {#3};}
+% ---- (a) pushdown
+\begin{scope}
+\node at (1.85,0.5) {\textbf{(a) Semi-join pushdown}};
+\lanes{4.1}
+\draw[msg] (0,-0.6) -- (3.65,-0.6);   \lbl{ml}{-0.6}{probes}
+\draw[ret] (3.65,-1.05) -- (0,-1.05); \lbl{rl}{-1.05}{$c_0,c_1,c_2$}
+\draw[msg] (0,-1.55) -- (1.65,-1.55); \lbl{ml}{-1.55}{$\phi_2$}
+\draw[ret] (1.65,-2.0) -- (0,-2.0);   \lbl{rl}{-2.0}{$H_2$}
+\draw[msg] (0,-2.5) -- (2.65,-2.5);   \lbl{ml}{-2.5}{$T_{2\to1}(H_2)$}
+\draw[ret] (2.65,-2.95) -- (0,-2.95); \lbl{rl}{-2.95}{$H_1,\,s_1$}
+\draw[msg] (0,-3.45) -- (3.65,-3.45); \lbl{ml}{-3.45}{$T_{1\to0}(H_1)$}
+\draw[ret] (3.65,-3.9) -- (0,-3.9);   \lbl{rl}{-3.9}{$H_0,\,s_0$}
+\node[anchor=west] at (-0.2,-4.35) {4 round trips; traffic $\propto c_{\min}$};
+\end{scope}
+% ---- (b) broadcast
+\begin{scope}[xshift=50mm]
+\node at (1.85,0.5) {\textbf{(b) Broadcast}};
+\lanes{4.1}
+\draw[msg] (0,-0.6) -- (3.65,-0.6);   \lbl{ml}{-0.6}{all $\phi_c$}
+\draw[ret] (1.65,-1.1) -- (0,-1.1);   \lbl{rl}{-1.1}{$H_2$}
+\draw[ret] (2.65,-1.55) -- (0,-1.55); \lbl{rl}{-1.55}{$H_1,\,s_1$}
+\draw[ret] (3.65,-2.0) -- (0,-2.0);   \lbl{rl}{-2.0}{$H_0,\,s_0$}
+\node[draw, rounded corners=1pt, fill=blue!6, align=left, anchor=north west, font=\scriptsize] at (0.15,-2.45)
+  {proxy: invert all handles,\\ intersect row ids,\\ $\sum (s_0+s_1) \bmod q$};
+\node[anchor=west] at (-0.2,-4.35) {1 round trip; traffic $\propto c_0{+}c_1{+}c_2$};
+\end{scope}
+\end{tikzpicture}

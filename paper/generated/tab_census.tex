@@ -1,0 +1,14 @@
+\begin{tabular}{@{}lrrrrrrr@{}}
+\toprule
+ & \multicolumn{4}{c}{loopback} & \multicolumn{3}{c}{10\,ms, 100\,Mb/s}\\
+\cmidrule(lr){2-5}\cmidrule(l){6-8}
+System & Q1 & Q3 & Q4 & Rand. & Q1 & Q4 & Rand.\\
+\midrule
+\textbf{\sys{}} & 0.20 & 121 & 26.7 & 6.13 & 25.7 & 185 & 45.9\\
+Map split & 0.20 & 140 & 36.0 & 6.49 & 25.4 & 184 & 49.1\\
+Shared-TID split & 0.21 & 105 & 21.3 & 5.45 & 25.4 & 182 & 44.9\\
+DET+AEAD & 0.09 & 118 & 10.2 & 2.08 & 12.7 & 71.2 & 16.7\\
+AEAD scan & 484 & 594 & 605 & 603 & 3698 & 3810 & --\\
+3PC-RSS & 69.1 & 23.8 & 27.0 & 18.9 & 2415 & 879 & 659\\
+\bottomrule
+\end{tabular}

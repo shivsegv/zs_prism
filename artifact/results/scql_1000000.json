@@ -1,0 +1,78 @@
+{
+ "scql_image": "secretflow/scql:1.0.0b1",
+ "n": 1000000,
+ "runs": [
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.134,
+   "query": "Q3 range-avg",
+   "median_ms": 103.942541,
+   "lat_ms": [
+    103.838583,
+    103.942541,
+    152.130083
+   ],
+   "count": 419731
+  },
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.134,
+   "query": "Q4 conj-avg",
+   "median_ms": 585.243167,
+   "lat_ms": [
+    592.31625,
+    571.9875,
+    585.243167
+   ],
+   "count": 21695
+  },
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.134,
+   "query": "Q5 conj-sel",
+   "median_ms": 251.252583,
+   "lat_ms": [
+    254.472209,
+    251.252583,
+    248.510875
+   ],
+   "count": 1984
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.975,
+   "query": "Q3 range-avg",
+   "median_ms": 103.49425,
+   "lat_ms": [
+    103.49425,
+    102.544291,
+    113.21975
+   ],
+   "count": 419731
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.975,
+   "query": "Q4 conj-avg",
+   "median_ms": 2078.310375,
+   "lat_ms": [
+    2078.310375,
+    2108.577167,
+    2065.760792
+   ],
+   "count": 21695
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.975,
+   "query": "Q5 conj-sel",
+   "median_ms": 928.815125,
+   "lat_ms": [
+    934.43075,
+    921.978792,
+    928.815125
+   ],
+   "count": 1984
+  }
+ ]
+}

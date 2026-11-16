@@ -1,0 +1,37 @@
+{
+ "env": {
+  "cpu": "Apple M4",
+  "mem_gib": 24.0,
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.16",
+  "sqlite": "3.53.1",
+  "cryptography": "50.0.2",
+  "phe": "1.5.0",
+  "numpy": "2.0.2",
+  "msgpack": "1.1.2"
+ },
+ "n": 45222,
+ "snapshot": {
+  "ZS-PRISM": {
+   "n": 45222,
+   "s0s2_equality_linked": 0.0,
+   "s0s2_rank_linked": 0.0,
+   "s0s1_sharesum_claimed": 1.0,
+   "s0s1_sharesum_correct": 1.0
+  },
+  "Map split": {
+   "n": 45222,
+   "s0s2_equality_linked": 0.0,
+   "s0s2_rank_linked": 2.2113130777055414e-05,
+   "s0s1_sharesum_claimed": 1.0,
+   "s0s1_sharesum_correct": 1.0
+  },
+  "Shared-TID split": {
+   "n": 45222,
+   "s0s2_equality_linked": 1.0,
+   "s0s2_rank_linked": 2.2113130777055414e-05,
+   "s0s1_sharesum_claimed": 1.0,
+   "s0s1_sharesum_correct": 1.0
+  }
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "scql_image": "secretflow/scql:1.0.0b1",
+ "n": 45222,
+ "runs": [
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.108,
+   "query": "Q3 range-avg",
+   "median_ms": 11.550375,
+   "lat_ms": [
+    13.177542,
+    14.955333,
+    11.550375,
+    10.801458,
+    10.451792
+   ],
+   "count": 18942
+  },
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.108,
+   "query": "Q4 conj-avg",
+   "median_ms": 57.73875,
+   "lat_ms": [
+    57.780833,
+    57.166333,
+    55.729458,
+    57.73875,
+    59.184875
+   ],
+   "count": 976
+  },
+  {
+   "setting": "loopback",
+   "measured_engine_rtt_ms": 0.108,
+   "query": "Q5 conj-sel",
+   "median_ms": 42.075459,
+   "lat_ms": [
+    41.047041,
+    41.062208,
+    42.935833,
+    42.265292,
+    42.075459
+   ],
+   "count": 91
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.807,
+   "query": "Q3 range-avg",
+   "median_ms": 10.975792,
+   "lat_ms": [
+    10.911916,
+    11.856875,
+    10.975792,
+    11.3025,
+    10.902833
+   ],
+   "count": 18942
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.807,
+   "query": "Q4 conj-avg",
+   "median_ms": 755.234166,
+   "lat_ms": [
+    851.682041,
+    709.869291,
+    816.163125,
+    755.234166,
+    682.463125
+   ],
+   "count": 976
+  },
+  {
+   "setting": "wan_100mbps_20ms",
+   "measured_engine_rtt_ms": 23.807,
+   "query": "Q5 conj-sel",
+   "median_ms": 585.267209,
+   "lat_ms": [
+    647.887708,
+    585.267209,
+    641.057125,
+    566.515167,
+    554.052583
+   ],
+   "count": 91
+  }
+ ]
+}

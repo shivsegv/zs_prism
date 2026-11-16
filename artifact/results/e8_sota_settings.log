@@ -1,0 +1,12 @@
+45222 ZS-PRISM 100.0 20.0 {'Q1 lookup': 50.5, 'Q3 range-avg': 155.0, 'Q4 conj-avg': 86.4, 'Q5 conj-sel': 63.0}
+45222 ZS-PRISM 1000.0 1.0 {'Q1 lookup': 2.8, 'Q3 range-avg': 34.3, 'Q4 conj-avg': 11.0, 'Q5 conj-sel': 8.1}
+45222 Map split 100.0 20.0 {'Q1 lookup': 50.2, 'Q3 range-avg': 152.8, 'Q4 conj-avg': 119.1, 'Q5 conj-sel': 61.8}
+45222 Map split 1000.0 1.0 {'Q1 lookup': 2.8, 'Q3 range-avg': 38.8, 'Q4 conj-avg': 17.5, 'Q5 conj-sel': 8.8}
+45222 3PC-RSS 100.0 20.0 {'Q1 lookup': 492.9, 'Q3 range-avg': 249.1, 'Q4 conj-avg': 277.4, 'Q5 conj-sel': 279.9}
+45222 3PC-RSS 1000.0 1.0 {'Q1 lookup': 66.2, 'Q3 range-avg': 26.4, 'Q4 conj-avg': 30.7, 'Q5 conj-sel': 28.3}
+1000000 ZS-PRISM 100.0 20.0 {'Q1 lookup': 50.5, 'Q3 range-avg': 2189.2, 'Q4 conj-avg': 911.0, 'Q5 conj-sel': 211.5}
+1000000 ZS-PRISM 1000.0 1.0 {'Q1 lookup': 2.9, 'Q3 range-avg': 895.9, 'Q4 conj-avg': 288.8, 'Q5 conj-sel': 151.6}
+1000000 Map split 100.0 20.0 {'Q1 lookup': 48.7, 'Q3 range-avg': 2314.3, 'Q4 conj-avg': 970.7, 'Q5 conj-sel': 285.5}
+1000000 Map split 1000.0 1.0 {'Q1 lookup': 2.8, 'Q3 range-avg': 1008.8, 'Q4 conj-avg': 341.1, 'Q5 conj-sel': 163.7}
+1000000 3PC-RSS 100.0 20.0 {'Q1 lookup': 7821.7, 'Q3 range-avg': 2580.8, 'Q4 conj-avg': 2688.7, 'Q5 conj-sel': 2700.3}
+1000000 3PC-RSS 1000.0 1.0 {'Q1 lookup': 1042.5, 'Q3 range-avg': 394.2, 'Q4 conj-avg': 406.6, 'Q5 conj-sel': 408.7}

@@ -1,0 +1,45 @@
+% Fig. 1 -- ZS-PRISM architecture with numbered query workflow (TikZ)
+\begin{tikzpicture}[
+  font=\footnotesize,
+  >={Stealth[length=2.2mm]},
+  comp/.style={draw, rounded corners=1.5pt, fill=white, align=center, minimum height=8mm, inner sep=2.5pt, text width=#1},
+  comp/.default=26mm,
+  zone/.style={draw, dashed, rounded corners=3pt, inner sep=6pt},
+  tbl/.style={draw, fill=white, align=left, inner sep=3pt, text width=41mm, font=\scriptsize},
+  lbl/.style={font=\scriptsize, align=center, inner sep=1pt},
+  flow/.style={->, thick},
+]
+% ---------------- trusted domain
+\node[comp=20mm, fill=gray!8] (app) at (0,0.55) {Applications\\ lookup, COUNT, AVG};
+\node[comp=20mm, fill=gray!8] (own) at (0,-1.25) {Data owner\\ load, update, delete};
+
+% ---------------- proxy
+\node[comp=25mm, fill=blue!6] (key) at (4.6,0.95) {\textbf{Root key} $K$\\ 32 B (sole persistent state)};
+\node[comp=25mm] (hkdf) at (4.6,-0.35) {HKDF-SHA-256\\ $K_h$ \ (handles), \ $K_t$ \ (tokens)};
+\node[comp=29mm] (prp) at (7.95,0.95) {\textbf{C1: Handle codec} \textcircled{\tiny 4}\\ $h_{r,c}=\mathrm{AES}_{K_h}(r\,\Vert\,c)$\\ derive / invert / translate};
+\node[comp=29mm] (tok) at (7.95,-0.35) {\textbf{C1/C2: Tokens, shares}\\ $\tau=\mathrm{HMAC}_{K_t}(\mathit{id})$,\ \ $v=s_0{+}s_1$};
+\node[comp=62mm] (plan) at (6.3,-1.65) {\textbf{C3: Sequential executor}: probe $c_c$ $\rightarrow$ order by $c_c$ $\rightarrow$ pushdown \emph{or} fetch (Eqs.~\ref{eq:bc}--\ref{eq:cost}) $\rightarrow$ $\sum (s_0+s_1) \bmod q$};
+\draw[->] (key) -- (hkdf);
+\draw[->] (hkdf) -- (prp.south west);
+\draw[->] (hkdf) -- (tok);
+\node[zone, draw=blue!60, fit=(key)(hkdf)(prp)(tok)(plan), label={[font=\scriptsize\bfseries, text=blue!60!black]above:TRUSTED PROXY (stateless; any replica can serve)}] (pz) {};
+\node[zone, draw=gray!70, fit=(app)(own), label={[font=\scriptsize\bfseries, text=gray!60!black]above:TRUSTED DOMAIN}] (cz) {};
+
+% ---------------- providers
+\node[tbl] (s0) at (15.6,1.0)  {\textbf{S0 \,(provider A)}\\[1pt]\texttt{h0 | tau | age | sex | s0}};
+\node[tbl] (s1) at (15.6,-0.35){\textbf{S1 \,(provider B)}\\[1pt]\texttt{h1 | education | marital | s1}};
+\node[tbl] (s2) at (15.6,-1.7) {\textbf{S2 \,(provider C)}\\[1pt]\texttt{h2 | occupation | race | country}};
+\node[zone, draw=red!55, fit=(s0)(s1)(s2), label={[font=\scriptsize\bfseries, text=red!55!black]above:HONEST-BUT-CURIOUS PROVIDERS}] (sz) {};
+
+% ---------------- flows (circled numbers: order of one conjunctive query)
+\newcommand{\sn}[1]{\textcircled{\tiny #1}}
+\draw[flow] ([yshift=1.2mm]app.east) -- ([yshift=1.2mm]pz.west |- app.east) node[midway, above, lbl]{\sn{1}\,query};
+\draw[flow] ([yshift=-1.2mm]pz.west |- app.east) -- ([yshift=-1.2mm]app.east) node[midway, below, lbl]{\sn{7}\,answer};
+\draw[flow] (own.east) -- (pz.west |- own.east) node[midway, above, lbl]{(I) records};
+\foreach \s/\c in {s0/0, s1/1, s2/2} {
+  \draw[flow, blue!60!black] ([yshift=1.3mm]pz.east |- \s.west) -- ([yshift=1.3mm]\s.west)
+    node[midway, above, lbl, text=blue!60!black]{\sn{2}\,$\phi_{\c}$\quad \sn{5}\,candidates};
+  \draw[flow, red!55!black] ([yshift=-1.3mm]\s.west) -- ([yshift=-1.3mm]pz.east |- \s.west)
+    node[midway, below, lbl, text=red!55!black]{\sn{3}\,$c_{\c}$\quad \sn{6}\,matches, $\Sigma s$};
+}
+\end{tikzpicture}

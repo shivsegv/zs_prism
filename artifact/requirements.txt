@@ -1,0 +1,6 @@
+cryptography==50.0.2
+gmpy2==2.3.2
+matplotlib==3.9.4
+msgpack==1.1.2
+numpy==2.0.2
+phe==1.5.0

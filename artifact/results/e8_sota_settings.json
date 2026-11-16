@@ -1,0 +1,822 @@
+{
+ "env": {
+  "cpu": "Apple M4",
+  "mem_gib": 24.0,
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.16",
+  "sqlite": "3.53.1",
+  "cryptography": "50.0.2",
+  "phe": "1.5.0",
+  "numpy": "2.0.2",
+  "msgpack": "1.1.2"
+ },
+ "runs": [
+  {
+   "n": 45222,
+   "system": "ZS-PRISM",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 50.496250041760504,
+     "p25": 50.348250078968704,
+     "p75": 50.68879190366715,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 154.97650008182973,
+     "p25": 153.74362492002547,
+     "p75": 155.16787499655038,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 757943
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 86.35837503243238,
+     "p25": 82.55054103210568,
+     "p75": 89.97795905452222,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 333199
+     },
+     "plan": [
+      "probe+ship",
+      1,
+      2,
+      "pushdown",
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 63.02462494932115,
+     "p25": 62.89987498894334,
+     "p75": 64.81770798563957,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 38301
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 45222,
+   "system": "ZS-PRISM",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 2.8328329790383577,
+     "p25": 2.801958005875349,
+     "p75": 2.8536670142784715,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 34.33454199694097,
+     "p25": 34.18562491424382,
+     "p75": 34.86433299258351,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 757943
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 10.978874983265996,
+     "p25": 10.86125010624528,
+     "p75": 11.147957993671298,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 333199
+     },
+     "plan": [
+      "probe+ship",
+      1,
+      2,
+      "pushdown",
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 8.063249988481402,
+     "p25": 7.999458000995219,
+     "p75": 8.063291083090007,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 38301
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 45222,
+   "system": "Map split",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 50.23745889775455,
+     "p25": 49.51758403331041,
+     "p75": 50.87183299474418,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 152.8003750136122,
+     "p25": 149.81583401095122,
+     "p75": 155.0524999620393,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 757943
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 119.07408409751952,
+     "p25": 117.37091699615121,
+     "p75": 124.08641702495515,
+     "n": 5,
+     "traffic": {
+      "requests": 5,
+      "bytes": 294854
+     },
+     "plan": [
+      "probe+ship",
+      2,
+      "pushdown",
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 61.8313750019297,
+     "p25": 60.622541001066566,
+     "p75": 61.97608297225088,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 38301
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 45222,
+   "system": "Map split",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 2.782458090223372,
+     "p25": 2.7660829946398735,
+     "p75": 2.7825830038636923,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 38.76187501009554,
+     "p25": 38.32941607106477,
+     "p75": 38.948292029090226,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 757943
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 17.487834091298282,
+     "p25": 17.382249934598804,
+     "p75": 17.496124957688153,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 294968
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      2,
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 8.776917005889118,
+     "p25": 8.69645900093019,
+     "p75": 10.84091595839709,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 38301
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 45222,
+   "system": "3PC-RSS",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 492.93495796155185,
+     "p25": 490.3705409960821,
+     "p75": 494.21158304903656,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 12465681
+     },
+     "plan": null
+    },
+    "Q3 range-avg": {
+     "median": 249.12325001787394,
+     "p25": 249.00675006210804,
+     "p75": 249.76170796435326,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 3867234
+     },
+     "plan": null
+    },
+    "Q4 conj-avg": {
+     "median": 277.35354099422693,
+     "p25": 277.09270897321403,
+     "p75": 282.21312491223216,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 4003071
+     },
+     "plan": null
+    },
+    "Q5 conj-sel": {
+     "median": 279.9486250150949,
+     "p25": 278.87495898175985,
+     "p75": 279.9949999898672,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 4020051
+     },
+     "plan": null
+    }
+   }
+  },
+  {
+   "n": 45222,
+   "system": "3PC-RSS",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 66.18562492076308,
+     "p25": 65.52708300296217,
+     "p75": 68.09233408421278,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 12465681
+     },
+     "plan": null
+    },
+    "Q3 range-avg": {
+     "median": 26.394124957732856,
+     "p25": 26.242374908179045,
+     "p75": 26.502416003495455,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 3867234
+     },
+     "plan": null
+    },
+    "Q4 conj-avg": {
+     "median": 30.67841602023691,
+     "p25": 28.718541958369315,
+     "p75": 32.99858397804201,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 4003071
+     },
+     "plan": null
+    },
+    "Q5 conj-sel": {
+     "median": 28.28708302695304,
+     "p25": 28.196499915793538,
+     "p75": 28.794583049602807,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 4020051
+     },
+     "plan": null
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "ZS-PRISM",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 50.51933310460299,
+     "p25": 48.85350004769862,
+     "p75": 50.814750022254884,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      "pushdown",
+      1,
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 2189.247583039105,
+     "p25": 2185.6214579893276,
+     "p75": 2191.595416981727,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 16789505
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 910.9787080669776,
+     "p25": 908.8351669488475,
+     "p75": 913.0047500366345,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 6533074
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      2,
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 211.53991599567235,
+     "p25": 210.400165989995,
+     "p75": 212.02624996658415,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 828192
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "ZS-PRISM",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 2.8702080016955733,
+     "p25": 2.8653329936787486,
+     "p75": 2.871750039048493,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 895.947957993485,
+     "p25": 895.1637080172077,
+     "p75": 896.4062910526991,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 16789505
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 288.83375006262213,
+     "p25": 285.56204098276794,
+     "p75": 307.809374993667,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 6533074
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      2,
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 151.60370897501707,
+     "p25": 151.33625001180917,
+     "p75": 152.80795900616795,
+     "n": 5,
+     "traffic": {
+      "requests": 4,
+      "bytes": 828196
+     },
+     "plan": [
+      "probe+ship",
+      0,
+      1,
+      "pushdown",
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "Map split",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 48.69537497870624,
+     "p25": 48.4086669748649,
+     "p75": 50.783957936801016,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      0,
+      1,
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 2314.2887090798467,
+     "p25": 2305.3941250545904,
+     "p75": 2331.747999996878,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 16789505
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 970.6828329944983,
+     "p25": 969.9991249945015,
+     "p75": 980.3117091068998,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 6533074
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      2,
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 285.4764169314876,
+     "p25": 285.414915997535,
+     "p75": 286.21845797169954,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 260428
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      0,
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "Map split",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 2.818582928739488,
+     "p25": 2.818124950863421,
+     "p75": 2.846292103640735,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "bytes": 422
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      0,
+      1,
+      2
+     ]
+    },
+    "Q3 range-avg": {
+     "median": 1008.7503750110045,
+     "p25": 993.7900409568101,
+     "p75": 1011.8324999930337,
+     "n": 5,
+     "traffic": {
+      "requests": 2,
+      "bytes": 16789505
+     },
+     "plan": [
+      "single",
+      0
+     ]
+    },
+    "Q4 conj-avg": {
+     "median": 341.0914170090109,
+     "p25": 339.0038328943774,
+     "p75": 343.2590840384364,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 6533074
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      2,
+      1,
+      0
+     ]
+    },
+    "Q5 conj-sel": {
+     "median": 163.72212499845773,
+     "p25": 163.3267920697108,
+     "p75": 163.87995798140764,
+     "n": 5,
+     "traffic": {
+      "requests": 6,
+      "bytes": 260428
+     },
+     "plan": [
+      "probe",
+      "pushdown",
+      0,
+      1,
+      2
+     ]
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "3PC-RSS",
+   "rtt_ms": 20.0,
+   "rate_mbps": 100.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 7821.6803329996765,
+     "p25": 7799.571749987081,
+     "p75": 7824.060915969312,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 275626071
+     },
+     "plan": null
+    },
+    "Q3 range-avg": {
+     "median": 2580.8009159518406,
+     "p25": 2578.3802500227466,
+     "p75": 2584.732291987166,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 85500402
+     },
+     "plan": null
+    },
+    "Q4 conj-avg": {
+     "median": 2688.700250000693,
+     "p25": 2686.9074589340016,
+     "p75": 2693.889082991518,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 88500495
+     },
+     "plan": null
+    },
+    "Q5 conj-sel": {
+     "median": 2700.329624931328,
+     "p25": 2693.550332915038,
+     "p75": 2702.949917060323,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 88875507
+     },
+     "plan": null
+    }
+   }
+  },
+  {
+   "n": 1000000,
+   "system": "3PC-RSS",
+   "rtt_ms": 1.0,
+   "rate_mbps": 1000.0,
+   "workloads": {
+    "Q1 lookup": {
+     "median": 1042.5413750344887,
+     "p25": 1040.754250017926,
+     "p75": 1045.1645840657875,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 275626071
+     },
+     "plan": null
+    },
+    "Q3 range-avg": {
+     "median": 394.2444999702275,
+     "p25": 392.42149994242936,
+     "p75": 394.3956249859184,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 8,
+      "bytes": 85500402
+     },
+     "plan": null
+    },
+    "Q4 conj-avg": {
+     "median": 406.62487503141165,
+     "p25": 405.68266704212874,
+     "p75": 408.50516594946384,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 88500495
+     },
+     "plan": null
+    },
+    "Q5 conj-sel": {
+     "median": 408.67108409292996,
+     "p25": 407.06358395982534,
+     "p75": 411.8422089377418,
+     "n": 5,
+     "traffic": {
+      "requests": 3,
+      "rounds": 10,
+      "bytes": 88875507
+     },
+     "plan": null
+    }
+   }
+  }
+ ]
+}

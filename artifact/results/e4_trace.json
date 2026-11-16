@@ -1,0 +1,129 @@
+{
+ "env": {
+  "cpu": "Apple M4",
+  "mem_gib": 24.0,
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.16",
+  "sqlite": "3.53.1",
+  "cryptography": "50.0.2",
+  "phe": "1.5.0",
+  "numpy": "2.0.2",
+  "msgpack": "1.1.2"
+ },
+ "n": 45222,
+ "targets": 1000,
+ "runs": [
+  {
+   "plan": "pushdown",
+   "pair": "S0+S2",
+   "queries": 10,
+   "linked": 0.0,
+   "median_candidates": 45222
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S0+S2",
+   "queries": 100,
+   "linked": 0.0,
+   "median_candidates": 21317
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S0+S2",
+   "queries": 300,
+   "linked": 0.002,
+   "median_candidates": 2839
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S0+S2",
+   "queries": 1000,
+   "linked": 0.02,
+   "median_candidates": 534
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S1+S2",
+   "queries": 10,
+   "linked": 0.0,
+   "median_candidates": 45170
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S1+S2",
+   "queries": 100,
+   "linked": 0.002,
+   "median_candidates": 23862
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S1+S2",
+   "queries": 300,
+   "linked": 0.01,
+   "median_candidates": 3854
+  },
+  {
+   "plan": "pushdown",
+   "pair": "S1+S2",
+   "queries": 1000,
+   "linked": 0.032,
+   "median_candidates": 456
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S0+S2",
+   "queries": 10,
+   "linked": 0.0,
+   "median_candidates": 45222
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S0+S2",
+   "queries": 100,
+   "linked": 0.0,
+   "median_candidates": 45222
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S0+S2",
+   "queries": 300,
+   "linked": 0.0,
+   "median_candidates": 38903
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S0+S2",
+   "queries": 1000,
+   "linked": 0.0,
+   "median_candidates": 4845
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S1+S2",
+   "queries": 10,
+   "linked": 0.0,
+   "median_candidates": 45222
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S1+S2",
+   "queries": 100,
+   "linked": 0.0,
+   "median_candidates": 45222
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S1+S2",
+   "queries": 300,
+   "linked": 0.0,
+   "median_candidates": 38903
+  },
+  {
+   "plan": "broadcast",
+   "pair": "S1+S2",
+   "queries": 1000,
+   "linked": 0.0,
+   "median_candidates": 4845
+  }
+ ]
+}

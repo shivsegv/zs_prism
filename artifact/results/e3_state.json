@@ -1,0 +1,49 @@
+{
+ "env": {
+  "cpu": "Apple M4",
+  "mem_gib": 24.0,
+  "os": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.16",
+  "sqlite": "3.53.1",
+  "cryptography": "50.0.2",
+  "phe": "1.5.0",
+  "numpy": "2.0.2",
+  "msgpack": "1.1.2"
+ },
+ "runs": [
+  {
+   "n": 10000,
+   "map_snapshot_bytes": 600000,
+   "map_heap_bytes": 3240328,
+   "map_bootstrap_ms": 4.496791982091963,
+   "map_bytes_per_record": 60.0,
+   "map_heap_per_record": 324.0328
+  },
+  {
+   "n": 100000,
+   "map_snapshot_bytes": 6000000,
+   "map_heap_bytes": 46158064,
+   "map_bootstrap_ms": 60.185124981217086,
+   "map_bytes_per_record": 60.0,
+   "map_heap_per_record": 461.58064
+  },
+  {
+   "n": 1000000,
+   "map_snapshot_bytes": 60000000,
+   "map_heap_bytes": 398659000,
+   "map_bootstrap_ms": 903.0318750301376,
+   "map_bytes_per_record": 60.0,
+   "map_heap_per_record": 398.659
+  },
+  {
+   "n": 3000000,
+   "map_snapshot_bytes": 180000000,
+   "map_heap_bytes": 1447633688,
+   "map_bootstrap_ms": 3276.960708084516,
+   "map_bytes_per_record": 60.0,
+   "map_heap_per_record": 482.54456266666665
+  }
+ ],
+ "zs_bootstrap_ms": 0.006458954885601997,
+ "zs_state_bytes": 32
+}

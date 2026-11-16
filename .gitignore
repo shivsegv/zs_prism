@@ -1,0 +1,11 @@
+__pycache__/
+.venv/
+.mplcache/
+artifact/data/
+artifact/scql_bench/bin/
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+.DS_Store

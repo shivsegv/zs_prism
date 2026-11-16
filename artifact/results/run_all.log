@@ -1,0 +1,1106 @@
+test_det_aead (test_correctness.DifferentialTests.test_det_aead) ... ok
+test_det_paillier (test_correctness.DifferentialTests.test_det_paillier) ... ok
+test_map_split (test_correctness.DifferentialTests.test_map_split) ... ok
+test_mpc3 (test_correctness.DifferentialTests.test_mpc3)
+3PC-RSS is bulk-loaded; queries and lookups only (no writes). ... ok
+test_scan (test_correctness.DifferentialTests.test_scan) ... ok
+test_shared_split (test_correctness.DifferentialTests.test_shared_split) ... ok
+test_zs_prism_auto (test_correctness.DifferentialTests.test_zs_prism_auto) ... ok
+test_zs_prism_broadcast (test_correctness.DifferentialTests.test_zs_prism_broadcast) ... ok
+test_zs_prism_pushdown (test_correctness.DifferentialTests.test_zs_prism_pushdown) ... ok
+test_handle_roundtrip_and_store_binding (test_correctness.PrimitiveTests.test_handle_roundtrip_and_store_binding) ... ok
+test_large_frame (test_correctness.PrimitiveTests.test_large_frame)
+64 MiB frames survive the transport (chunked send, ENOBUFS retry). ... ok
+test_map_snapshot_roundtrip (test_correctness.PrimitiveTests.test_map_snapshot_roundtrip) ... ok
+test_shares (test_correctness.PrimitiveTests.test_shares) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 38.467s
+
+OK
+{'n': 10000, 'map_snapshot_bytes': 600000, 'map_heap_bytes': 3240328, 'map_bootstrap_ms': 4.496791982091963, 'map_bytes_per_record': 60.0, 'map_heap_per_record': 324.0328}
+{'n': 100000, 'map_snapshot_bytes': 6000000, 'map_heap_bytes': 46158064, 'map_bootstrap_ms': 60.185124981217086, 'map_bytes_per_record': 60.0, 'map_heap_per_record': 461.58064}
+{'n': 1000000, 'map_snapshot_bytes': 60000000, 'map_heap_bytes': 398659000, 'map_bootstrap_ms': 903.0318750301376, 'map_bytes_per_record': 60.0, 'map_heap_per_record': 398.659}
+{'n': 3000000, 'map_snapshot_bytes': 180000000, 'map_heap_bytes': 1447633688, 'map_bootstrap_ms': 3276.960708084516, 'map_bytes_per_record': 60.0, 'map_heap_per_record': 482.54456266666665}
+ZS-PRISM {'n': 45222, 's0s2_equality_linked': 0.0, 's0s2_rank_linked': 0.0, 's0s1_sharesum_claimed': 1.0, 's0s1_sharesum_correct': 1.0}
+Map split {'n': 45222, 's0s2_equality_linked': 0.0, 's0s2_rank_linked': 2.2113130777055414e-05, 's0s1_sharesum_claimed': 1.0, 's0s1_sharesum_correct': 1.0}
+Shared-TID split {'n': 45222, 's0s2_equality_linked': 1.0, 's0s2_rank_linked': 2.2113130777055414e-05, 's0s1_sharesum_claimed': 1.0, 's0s1_sharesum_correct': 1.0}
+{'plan': 'pushdown', 'pair': 'S0+S2', 'queries': 10, 'linked': 0.0, 'median_candidates': 45222}
+{'plan': 'pushdown', 'pair': 'S0+S2', 'queries': 100, 'linked': 0.0, 'median_candidates': 21317}
+{'plan': 'pushdown', 'pair': 'S0+S2', 'queries': 300, 'linked': 0.002, 'median_candidates': 2839}
+{'plan': 'pushdown', 'pair': 'S0+S2', 'queries': 1000, 'linked': 0.02, 'median_candidates': 534}
+{'plan': 'pushdown', 'pair': 'S1+S2', 'queries': 10, 'linked': 0.0, 'median_candidates': 45170}
+{'plan': 'pushdown', 'pair': 'S1+S2', 'queries': 100, 'linked': 0.002, 'median_candidates': 23862}
+{'plan': 'pushdown', 'pair': 'S1+S2', 'queries': 300, 'linked': 0.01, 'median_candidates': 3854}
+{'plan': 'pushdown', 'pair': 'S1+S2', 'queries': 1000, 'linked': 0.032, 'median_candidates': 456}
+{'plan': 'broadcast', 'pair': 'S0+S2', 'queries': 10, 'linked': 0.0, 'median_candidates': 45222}
+{'plan': 'broadcast', 'pair': 'S0+S2', 'queries': 100, 'linked': 0.0, 'median_candidates': 45222}
+{'plan': 'broadcast', 'pair': 'S0+S2', 'queries': 300, 'linked': 0.0, 'median_candidates': 38903}
+{'plan': 'broadcast', 'pair': 'S0+S2', 'queries': 1000, 'linked': 0.0, 'median_candidates': 4845}
+{'plan': 'broadcast', 'pair': 'S1+S2', 'queries': 10, 'linked': 0.0, 'median_candidates': 45222}
+{'plan': 'broadcast', 'pair': 'S1+S2', 'queries': 100, 'linked': 0.0, 'median_candidates': 45222}
+{'plan': 'broadcast', 'pair': 'S1+S2', 'queries': 300, 'linked': 0.0, 'median_candidates': 38903}
+{'plan': 'broadcast', 'pair': 'S1+S2', 'queries': 1000, 'linked': 0.0, 'median_candidates': 4845}
+{'method': 'MDAV', 'k': 5, 'seconds': 35.04609216703102, 'min_class': 5, 'age_sse_sst': 0.009275685974733642, 'count_rel_median': 0.014095536413469069, 'count_rel_mean': 0.07090297499851653, 'count_gt10pct': 0.186, 'avg_rel_median': 0.0026231529083684565, 'avg_rel_mean': 0.01881684947466639}
+{'method': 'Mondrian', 'k': 5, 'seconds': 0.1671471669105813, 'min_class': 5, 'count_rel_median': np.float64(0.05177583062351729), 'count_rel_mean': np.float64(0.6545205500111251), 'count_gt10pct': np.float64(0.376), 'avg_rel_median': np.float64(0.00413878716557647), 'avg_rel_mean': np.float64(0.016466651409252513)}
+{'method': 'MDAV', 'k': 10, 'seconds': 17.386014165938832, 'min_class': 10, 'age_sse_sst': 0.015797296692600445, 'count_rel_median': 0.027522935779816515, 'count_rel_mean': 0.12757158307787572, 'count_gt10pct': 0.313, 'avg_rel_median': 0.004216579479637753, 'avg_rel_mean': 0.0358887951302714}
+{'method': 'Mondrian', 'k': 10, 'seconds': 0.12976808403618634, 'min_class': 10, 'count_rel_median': np.float64(0.10355832765517355), 'count_rel_mean': np.float64(1.2942486733271843), 'count_gt10pct': np.float64(0.506), 'avg_rel_median': np.float64(0.007339860827267184), 'avg_rel_mean': np.float64(0.02202877605631118)}
+{'method': 'MDAV', 'k': 25, 'seconds': 6.97835800005123, 'min_class': 25, 'age_sse_sst': 0.02518183439401755, 'count_rel_median': 0.04584847025867729, 'count_rel_mean': 0.2081791075873409, 'count_gt10pct': 0.378, 'avg_rel_median': 0.006275732313433976, 'avg_rel_mean': 0.11473678076824197}
+{'method': 'Mondrian', 'k': 25, 'seconds': 0.08559962501749396, 'min_class': 25, 'count_rel_median': np.float64(0.17733764703182298), 'count_rel_mean': np.float64(2.3604010312523065), 'count_gt10pct': np.float64(0.605), 'avg_rel_median': np.float64(0.012302085421235889), 'avg_rel_mean': np.float64(0.030005370100649367)}
+{'method': 'MDAV', 'k': 50, 'seconds': 3.5385370410513133, 'min_class': 50, 'age_sse_sst': 0.03182508058786437, 'count_rel_median': 0.0771679625943883, 'count_rel_mean': 0.30352217012916566, 'count_gt10pct': 0.446, 'avg_rel_median': 0.007537722516904649, 'avg_rel_mean': 0.22205420914944804}
+{'method': 'Mondrian', 'k': 50, 'seconds': 0.07441337511409074, 'min_class': 50, 'count_rel_median': np.float64(0.22111323534796418), 'count_rel_mean': np.float64(3.5429409992588523), 'count_gt10pct': np.float64(0.645), 'avg_rel_median': np.float64(0.012468716424066459), 'avg_rel_mean': np.float64(0.0326431910390669)}
+ZS-PRISM 0.0 {'update': 0.153, 'delete': 0.163, 'insert': 0.124}
+ZS-PRISM 10.0 {'update': 29.981, 'delete': 30.446, 'insert': 15.408}
+Map split 0.0 {'update': 0.15, 'delete': 0.167, 'insert': 0.123}
+Map split 10.0 {'update': 29.155, 'delete': 29.492, 'insert': 15.383}
+Shared-TID split 0.0 {'update': 0.139, 'delete': 0.151, 'insert': 0.115}
+Shared-TID split 10.0 {'update': 30.051, 'delete': 28.808, 'insert': 15.614}
+DET+Paillier 0.0 {'update': 4.679, 'delete': 0.074, 'insert': 4.616}
+DET+Paillier 10.0 {'update': 40.697, 'delete': 14.656, 'insert': 23.126}
+DET+AEAD 0.0 {'update': 0.141, 'delete': 0.072, 'insert': 0.069}
+DET+AEAD 10.0 {'update': 28.556, 'delete': 14.222, 'insert': 14.707}
+ZS-PRISM 100.0 1.0 {'Q1 lookup': 3.4, 'Q2 count-1': 1.8, 'Q3 range-avg': 122.1, 'Q4 conj-avg': 57.5, 'Q5 conj-sel': 11.3}
+ZS-PRISM 100.0 5.0 {'Q1 lookup': 15.5, 'Q2 count-1': 7.8, 'Q3 range-avg': 132.0, 'Q4 conj-avg': 84.3, 'Q5 conj-sel': 25.1}
+ZS-PRISM 100.0 10.0 {'Q1 lookup': 29.0, 'Q2 count-1': 15.5, 'Q3 range-avg': 146.0, 'Q4 conj-avg': 96.7, 'Q5 conj-sel': 41.3}
+ZS-PRISM 100.0 25.0 {'Q1 lookup': 69.6, 'Q2 count-1': 31.3, 'Q3 range-avg': 180.3, 'Q4 conj-avg': 107.5, 'Q5 conj-sel': 83.0}
+ZS-PRISM 100.0 50.0 {'Q1 lookup': 117.8, 'Q2 count-1': 58.7, 'Q3 range-avg': 236.6, 'Q4 conj-avg': 123.7, 'Q5 conj-sel': 133.8}
+ZS-PRISM 1000.0 1.0 {'Q1 lookup': 3.4, 'Q2 count-1': 1.7, 'Q3 range-avg': 37.6, 'Q4 conj-avg': 18.8, 'Q5 conj-sel': 8.4}
+ZS-PRISM 1000.0 5.0 {'Q1 lookup': 15.3, 'Q2 count-1': 7.8, 'Q3 range-avg': 51.4, 'Q4 conj-avg': 25.6, 'Q5 conj-sel': 21.5}
+ZS-PRISM 1000.0 10.0 {'Q1 lookup': 30.4, 'Q2 count-1': 15.3, 'Q3 range-avg': 69.7, 'Q4 conj-avg': 34.7, 'Q5 conj-sel': 36.4}
+ZS-PRISM 1000.0 25.0 {'Q1 lookup': 66.1, 'Q2 count-1': 34.2, 'Q3 range-avg': 116.0, 'Q4 conj-avg': 53.4, 'Q5 conj-sel': 55.9}
+ZS-PRISM 1000.0 50.0 {'Q1 lookup': 117.0, 'Q2 count-1': 61.0, 'Q3 range-avg': 172.9, 'Q4 conj-avg': 85.9, 'Q5 conj-sel': 86.5}
+ZS-PRISM (pushdown) 100.0 1.0 {'Q1 lookup': 3.4, 'Q2 count-1': 1.8, 'Q3 range-avg': 122.4, 'Q4 conj-avg': 57.3, 'Q5 conj-sel': 15.9}
+ZS-PRISM (pushdown) 100.0 5.0 {'Q1 lookup': 15.5, 'Q2 count-1': 7.8, 'Q3 range-avg': 132.6, 'Q4 conj-avg': 84.6, 'Q5 conj-sel': 44.0}
+ZS-PRISM (pushdown) 100.0 10.0 {'Q1 lookup': 28.6, 'Q2 count-1': 15.3, 'Q3 range-avg': 143.1, 'Q4 conj-avg': 116.7, 'Q5 conj-sel': 78.6}
+ZS-PRISM (pushdown) 100.0 25.0 {'Q1 lookup': 68.8, 'Q2 count-1': 33.4, 'Q3 range-avg': 174.1, 'Q4 conj-avg': 183.9, 'Q5 conj-sel': 158.5}
+ZS-PRISM (pushdown) 100.0 50.0 {'Q1 lookup': 118.2, 'Q2 count-1': 60.2, 'Q3 range-avg': 239.6, 'Q4 conj-avg': 284.8, 'Q5 conj-sel': 253.1}
+ZS-PRISM (pushdown) 1000.0 1.0 {'Q1 lookup': 3.4, 'Q2 count-1': 1.8, 'Q3 range-avg': 37.4, 'Q4 conj-avg': 17.6, 'Q5 conj-sel': 12.5}
+ZS-PRISM (pushdown) 1000.0 5.0 {'Q1 lookup': 15.3, 'Q2 count-1': 7.8, 'Q3 range-avg': 50.8, 'Q4 conj-avg': 46.8, 'Q5 conj-sel': 40.9}
+ZS-PRISM (pushdown) 1000.0 10.0 {'Q1 lookup': 30.9, 'Q2 count-1': 15.4, 'Q3 range-avg': 69.5, 'Q4 conj-avg': 84.2, 'Q5 conj-sel': 76.4}
+ZS-PRISM (pushdown) 1000.0 25.0 {'Q1 lookup': 67.7, 'Q2 count-1': 33.7, 'Q3 range-avg': 113.8, 'Q4 conj-avg': 167.2, 'Q5 conj-sel': 146.7}
+ZS-PRISM (pushdown) 1000.0 50.0 {'Q1 lookup': 115.7, 'Q2 count-1': 60.8, 'Q3 range-avg': 173.5, 'Q4 conj-avg': 267.2, 'Q5 conj-sel': 255.9}
+ZS-PRISM (broadcast) 100.0 1.0 {'Q1 lookup': 3.4, 'Q2 count-1': 1.8, 'Q3 range-avg': 122.9, 'Q4 conj-avg': 65.5, 'Q5 conj-sel': 84.4}
+ZS-PRISM (broadcast) 100.0 5.0 {'Q1 lookup': 15.5, 'Q2 count-1': 7.8, 'Q3 range-avg': 130.4, 'Q4 conj-avg': 72.1, 'Q5 conj-sel': 90.0}
+ZS-PRISM (broadcast) 100.0 10.0 {'Q1 lookup': 26.7, 'Q2 count-1': 12.1, 'Q3 range-avg': 144.7, 'Q4 conj-avg': 77.5, 'Q5 conj-sel': 94.3}
+ZS-PRISM (broadcast) 100.0 25.0 {'Q1 lookup': 68.8, 'Q2 count-1': 33.9, 'Q3 range-avg': 180.7, 'Q4 conj-avg': 92.5, 'Q5 conj-sel': 111.3}
+ZS-PRISM (broadcast) 100.0 50.0 {'Q1 lookup': 117.9, 'Q2 count-1': 54.7, 'Q3 range-avg': 239.6, 'Q4 conj-avg': 127.3, 'Q5 conj-sel': 141.4}
+ZS-PRISM (broadcast) 1000.0 1.0 {'Q1 lookup': 3.3, 'Q2 count-1': 1.7, 'Q3 range-avg': 36.8, 'Q4 conj-avg': 18.3, 'Q5 conj-sel': 19.3}
+ZS-PRISM (broadcast) 1000.0 5.0 {'Q1 lookup': 15.3, 'Q2 count-1': 7.8, 'Q3 range-avg': 52.0, 'Q4 conj-avg': 25.1, 'Q5 conj-sel': 26.0}
+ZS-PRISM (broadcast) 1000.0 10.0 {'Q1 lookup': 30.9, 'Q2 count-1': 15.5, 'Q3 range-avg': 70.1, 'Q4 conj-avg': 34.5, 'Q5 conj-sel': 35.4}
+ZS-PRISM (broadcast) 1000.0 25.0 {'Q1 lookup': 61.3, 'Q2 count-1': 32.7, 'Q3 range-avg': 115.0, 'Q4 conj-avg': 56.6, 'Q5 conj-sel': 56.4}
+ZS-PRISM (broadcast) 1000.0 50.0 {'Q1 lookup': 117.0, 'Q2 count-1': 57.4, 'Q3 range-avg': 174.0, 'Q4 conj-avg': 86.5, 'Q5 conj-sel': 85.8}
+Map split 100.0 1.0 {'Q1 lookup': 3.3, 'Q2 count-1': 1.7, 'Q3 range-avg': 125.5, 'Q4 conj-avg': 54.1, 'Q5 conj-sel': 11.4}
+Map split 100.0 5.0 {'Q1 lookup': 15.5, 'Q2 count-1': 7.8, 'Q3 range-avg': 129.9, 'Q4 conj-avg': 83.8, 'Q5 conj-sel': 24.1}
+Map split 100.0 10.0 {'Q1 lookup': 25.9, 'Q2 count-1': 15.3, 'Q3 range-avg': 148.2, 'Q4 conj-avg': 101.0, 'Q5 conj-sel': 42.5}
+Map split 100.0 25.0 {'Q1 lookup': 63.1, 'Q2 count-1': 33.0, 'Q3 range-avg': 180.2, 'Q4 conj-avg': 107.4, 'Q5 conj-sel': 86.2}
+Map split 100.0 50.0 {'Q1 lookup': 112.9, 'Q2 count-1': 61.0, 'Q3 range-avg': 238.5, 'Q4 conj-avg': 165.2, 'Q5 conj-sel': 138.8}
+Map split 1000.0 1.0 {'Q1 lookup': 3.3, 'Q2 count-1': 1.7, 'Q3 range-avg': 40.0, 'Q4 conj-avg': 12.9, 'Q5 conj-sel': 8.5}
+Map split 1000.0 5.0 {'Q1 lookup': 15.3, 'Q2 count-1': 7.8, 'Q3 range-avg': 53.8, 'Q4 conj-avg': 43.1, 'Q5 conj-sel': 23.2}
+Map split 1000.0 10.0 {'Q1 lookup': 30.7, 'Q2 count-1': 15.3, 'Q3 range-avg': 71.7, 'Q4 conj-avg': 42.3, 'Q5 conj-sel': 40.0}
+Map split 1000.0 25.0 {'Q1 lookup': 64.2, 'Q2 count-1': 31.1, 'Q3 range-avg': 117.0, 'Q4 conj-avg': 58.4, 'Q5 conj-sel': 78.7}
+Map split 1000.0 50.0 {'Q1 lookup': 115.0, 'Q2 count-1': 56.5, 'Q3 range-avg': 177.1, 'Q4 conj-avg': 88.7, 'Q5 conj-sel': 89.5}
+Shared-TID split 100.0 1.0 {'Q1 lookup': 3.3, 'Q2 count-1': 1.7, 'Q3 range-avg': 120.4, 'Q4 conj-avg': 56.6, 'Q5 conj-sel': 10.8}
+Shared-TID split 100.0 5.0 {'Q1 lookup': 15.6, 'Q2 count-1': 7.8, 'Q3 range-avg': 129.4, 'Q4 conj-avg': 84.6, 'Q5 conj-sel': 24.5}
+Shared-TID split 100.0 10.0 {'Q1 lookup': 30.7, 'Q2 count-1': 15.3, 'Q3 range-avg': 142.6, 'Q4 conj-avg': 93.4, 'Q5 conj-sel': 40.4}
+Shared-TID split 100.0 25.0 {'Q1 lookup': 68.8, 'Q2 count-1': 35.5, 'Q3 range-avg': 179.6, 'Q4 conj-avg': 102.9, 'Q5 conj-sel': 84.5}
+Shared-TID split 100.0 50.0 {'Q1 lookup': 118.9, 'Q2 count-1': 57.0, 'Q3 range-avg': 240.5, 'Q4 conj-avg': 121.6, 'Q5 conj-sel': 134.7}
+Shared-TID split 1000.0 1.0 {'Q1 lookup': 3.3, 'Q2 count-1': 1.7, 'Q3 range-avg': 34.9, 'Q4 conj-avg': 16.6, 'Q5 conj-sel': 8.2}
+Shared-TID split 1000.0 5.0 {'Q1 lookup': 15.3, 'Q2 count-1': 7.8, 'Q3 range-avg': 49.8, 'Q4 conj-avg': 23.7, 'Q5 conj-sel': 21.7}
+Shared-TID split 1000.0 10.0 {'Q1 lookup': 30.4, 'Q2 count-1': 15.3, 'Q3 range-avg': 68.4, 'Q4 conj-avg': 32.5, 'Q5 conj-sel': 33.3}
+Shared-TID split 1000.0 25.0 {'Q1 lookup': 68.7, 'Q2 count-1': 31.3, 'Q3 range-avg': 108.0, 'Q4 conj-avg': 53.7, 'Q5 conj-sel': 54.9}
+Shared-TID split 1000.0 50.0 {'Q1 lookup': 117.9, 'Q2 count-1': 56.8, 'Q3 range-avg': 174.2, 'Q4 conj-avg': 85.6, 'Q5 conj-sel': 86.6}
+DET+Paillier 100.0 1.0 {'Q1 lookup': 1.6, 'Q2 count-1': 1.7, 'Q3 range-avg': 86.1, 'Q4 conj-avg': 8.2, 'Q5 conj-sel': 9.3}
+DET+Paillier 100.0 5.0 {'Q1 lookup': 7.7, 'Q2 count-1': 7.8, 'Q3 range-avg': 92.8, 'Q4 conj-avg': 14.2, 'Q5 conj-sel': 14.5}
+DET+Paillier 100.0 10.0 {'Q1 lookup': 15.2, 'Q2 count-1': 15.3, 'Q3 range-avg': 99.7, 'Q4 conj-avg': 22.4, 'Q5 conj-sel': 23.6}
+DET+Paillier 100.0 25.0 {'Q1 lookup': 32.3, 'Q2 count-1': 35.0, 'Q3 range-avg': 119.7, 'Q4 conj-avg': 45.3, 'Q5 conj-sel': 48.1}
+DET+Paillier 100.0 50.0 {'Q1 lookup': 59.2, 'Q2 count-1': 56.7, 'Q3 range-avg': 146.8, 'Q4 conj-avg': 76.3, 'Q5 conj-sel': 78.4}
+DET+Paillier 1000.0 1.0 {'Q1 lookup': 1.7, 'Q2 count-1': 1.7, 'Q3 range-avg': 85.8, 'Q4 conj-avg': 8.0, 'Q5 conj-sel': 7.7}
+DET+Paillier 1000.0 5.0 {'Q1 lookup': 7.6, 'Q2 count-1': 7.7, 'Q3 range-avg': 91.6, 'Q4 conj-avg': 14.0, 'Q5 conj-sel': 14.2}
+DET+Paillier 1000.0 10.0 {'Q1 lookup': 15.2, 'Q2 count-1': 15.3, 'Q3 range-avg': 98.3, 'Q4 conj-avg': 22.2, 'Q5 conj-sel': 23.5}
+DET+Paillier 1000.0 25.0 {'Q1 lookup': 28.6, 'Q2 count-1': 35.3, 'Q3 range-avg': 120.3, 'Q4 conj-avg': 45.5, 'Q5 conj-sel': 48.3}
+DET+Paillier 1000.0 50.0 {'Q1 lookup': 56.0, 'Q2 count-1': 60.3, 'Q3 range-avg': 147.3, 'Q4 conj-avg': 77.3, 'Q5 conj-sel': 72.6}
+DET+AEAD 100.0 1.0 {'Q1 lookup': 1.7, 'Q2 count-1': 1.7, 'Q3 range-avg': 230.4, 'Q4 conj-avg': 18.3, 'Q5 conj-sel': 7.1}
+DET+AEAD 100.0 5.0 {'Q1 lookup': 6.4, 'Q2 count-1': 6.5, 'Q3 range-avg': 229.6, 'Q4 conj-avg': 21.2, 'Q5 conj-sel': 12.4}
+DET+AEAD 100.0 10.0 {'Q1 lookup': 12.7, 'Q2 count-1': 12.9, 'Q3 range-avg': 235.7, 'Q4 conj-avg': 28.0, 'Q5 conj-sel': 19.4}
+DET+AEAD 100.0 25.0 {'Q1 lookup': 29.2, 'Q2 count-1': 29.9, 'Q3 range-avg': 251.7, 'Q4 conj-avg': 45.3, 'Q5 conj-sel': 38.7}
+DET+AEAD 100.0 50.0 {'Q1 lookup': 53.0, 'Q2 count-1': 55.6, 'Q3 range-avg': 275.2, 'Q4 conj-avg': 71.7, 'Q5 conj-sel': 71.4}
+DET+AEAD 1000.0 1.0 {'Q1 lookup': 1.4, 'Q2 count-1': 1.5, 'Q3 range-avg': 47.7, 'Q4 conj-avg': 4.4, 'Q5 conj-sel': 4.8}
+DET+AEAD 1000.0 5.0 {'Q1 lookup': 6.4, 'Q2 count-1': 6.5, 'Q3 range-avg': 52.8, 'Q4 conj-avg': 9.8, 'Q5 conj-sel': 10.3}
+DET+AEAD 1000.0 10.0 {'Q1 lookup': 12.7, 'Q2 count-1': 12.8, 'Q3 range-avg': 60.3, 'Q4 conj-avg': 16.3, 'Q5 conj-sel': 17.4}
+DET+AEAD 1000.0 25.0 {'Q1 lookup': 29.4, 'Q2 count-1': 30.5, 'Q3 range-avg': 77.8, 'Q4 conj-avg': 35.6, 'Q5 conj-sel': 37.8}
+DET+AEAD 1000.0 50.0 {'Q1 lookup': 55.3, 'Q2 count-1': 56.0, 'Q3 range-avg': 108.2, 'Q4 conj-avg': 62.9, 'Q5 conj-sel': 68.2}
+AEAD scan 100.0 1.0 {'Q1 lookup': 488.8, 'Q2 count-1': 515.8, 'Q3 range-avg': 504.5, 'Q4 conj-avg': 508.0, 'Q5 conj-sel': 505.5}
+AEAD scan 100.0 5.0 {'Q1 lookup': 503.6, 'Q2 count-1': 518.0, 'Q3 range-avg': 509.1, 'Q4 conj-avg': 518.1, 'Q5 conj-sel': 516.5}
+AEAD scan 100.0 10.0 {'Q1 lookup': 500.0, 'Q2 count-1': 523.7, 'Q3 range-avg': 520.0, 'Q4 conj-avg': 526.7, 'Q5 conj-sel': 516.5}
+AEAD scan 100.0 25.0 {'Q1 lookup': 511.8, 'Q2 count-1': 531.8, 'Q3 range-avg': 530.9, 'Q4 conj-avg': 538.7, 'Q5 conj-sel': 534.7}
+AEAD scan 100.0 50.0 {'Q1 lookup': 541.9, 'Q2 count-1': 557.6, 'Q3 range-avg': 563.4, 'Q4 conj-avg': 558.5, 'Q5 conj-sel': 564.6}
+AEAD scan 1000.0 1.0 {'Q1 lookup': 103.2, 'Q2 count-1': 120.9, 'Q3 range-avg': 137.1, 'Q4 conj-avg': 131.2, 'Q5 conj-sel': 122.6}
+AEAD scan 1000.0 5.0 {'Q1 lookup': 105.5, 'Q2 count-1': 127.5, 'Q3 range-avg': 121.2, 'Q4 conj-avg': 121.2, 'Q5 conj-sel': 118.5}
+AEAD scan 1000.0 10.0 {'Q1 lookup': 114.3, 'Q2 count-1': 130.0, 'Q3 range-avg': 126.9, 'Q4 conj-avg': 139.6, 'Q5 conj-sel': 129.2}
+AEAD scan 1000.0 25.0 {'Q1 lookup': 135.7, 'Q2 count-1': 157.0, 'Q3 range-avg': 142.1, 'Q4 conj-avg': 143.7, 'Q5 conj-sel': 147.9}
+AEAD scan 1000.0 50.0 {'Q1 lookup': 162.4, 'Q2 count-1': 182.1, 'Q3 range-avg': 181.3, 'Q4 conj-avg': 183.8, 'Q5 conj-sel': 171.8}
+3PC-RSS 100.0 1.0 {'Q1 lookup': 387.6, 'Q2 count-1': 81.6, 'Q3 range-avg': 140.7, 'Q4 conj-avg': 147.4, 'Q5 conj-sel': 148.2}
+3PC-RSS 100.0 5.0 {'Q1 lookup': 411.9, 'Q2 count-1': 94.9, 'Q3 range-avg': 166.8, 'Q4 conj-avg': 177.1, 'Q5 conj-sel': 179.2}
+3PC-RSS 100.0 10.0 {'Q1 lookup': 442.0, 'Q2 count-1': 113.6, 'Q3 range-avg': 193.7, 'Q4 conj-avg': 214.2, 'Q5 conj-sel': 213.0}
+3PC-RSS 100.0 25.0 {'Q1 lookup': 522.0, 'Q2 count-1': 164.7, 'Q3 range-avg': 280.1, 'Q4 conj-avg': 318.0, 'Q5 conj-sel': 317.3}
+3PC-RSS 100.0 50.0 {'Q1 lookup': 658.5, 'Q2 count-1': 241.5, 'Q3 range-avg': 409.2, 'Q4 conj-avg': 476.4, 'Q5 conj-sel': 477.8}
+3PC-RSS 1000.0 1.0 {'Q1 lookup': 69.5, 'Q2 count-1': 14.6, 'Q3 range-avg': 26.5, 'Q4 conj-avg': 31.9, 'Q5 conj-sel': 33.0}
+3PC-RSS 1000.0 5.0 {'Q1 lookup': 107.7, 'Q2 count-1': 34.5, 'Q3 range-avg': 57.5, 'Q4 conj-avg': 65.9, 'Q5 conj-sel': 66.2}
+3PC-RSS 1000.0 10.0 {'Q1 lookup': 131.0, 'Q2 count-1': 52.8, 'Q3 range-avg': 88.8, 'Q4 conj-avg': 103.1, 'Q5 conj-sel': 104.1}
+3PC-RSS 1000.0 25.0 {'Q1 lookup': 214.1, 'Q2 count-1': 105.4, 'Q3 range-avg': 179.4, 'Q4 conj-avg': 211.7, 'Q5 conj-sel': 211.2}
+3PC-RSS 1000.0 50.0 {'Q1 lookup': 360.8, 'Q2 count-1': 188.0, 'Q3 range-avg': 317.7, 'Q4 conj-avg': 380.9, 'Q5 conj-sel': 379.0}
+45222 0 ZS-PRISM 392 {'Q1 lookup': 0.197, 'Q2 count-1': 0.154, 'Q3 range-avg': 24.818, 'Q4 conj-avg': 7.532, 'Q5 conj-sel': 5.28}
+45222 0 Map split 489 {'Q1 lookup': 0.189, 'Q2 count-1': 0.15, 'Q3 range-avg': 28.386, 'Q4 conj-avg': 8.8, 'Q5 conj-sel': 5.462}
+45222 0 Shared-TID split 390 {'Q1 lookup': 0.181, 'Q2 count-1': 0.148, 'Q3 range-avg': 22.749, 'Q4 conj-avg': 6.091, 'Q5 conj-sel': 5.171}
+45222 0 DET+Paillier 205548 {'Q1 lookup': 0.079, 'Q2 count-1': 0.117, 'Q3 range-avg': 83.126, 'Q4 conj-avg': 6.381, 'Q5 conj-sel': 6.494}
+45222 0 DET+AEAD 797 {'Q1 lookup': 0.083, 'Q2 count-1': 0.144, 'Q3 range-avg': 24.895, 'Q4 conj-avg': 2.097, 'Q5 conj-sel': 3.416}
+45222 0 AEAD scan 123 {'Q1 lookup': 62.821, 'Q2 count-1': 75.307, 'Q3 range-avg': 68.25, 'Q4 conj-avg': 79.977, 'Q5 conj-sel': 69.509}
+45222 0 3PC-RSS 73 {'Q1 lookup': 12.05, 'Q2 count-1': 1.904, 'Q3 range-avg': 3.173, 'Q4 conj-avg': 3.71, 'Q5 conj-sel': 3.528}
+45222 1 ZS-PRISM 400 {'Q1 lookup': 0.181, 'Q2 count-1': 0.151, 'Q3 range-avg': 24.963, 'Q4 conj-avg': 7.806, 'Q5 conj-sel': 5.351}
+45222 1 Map split 500 {'Q1 lookup': 0.159, 'Q2 count-1': 0.132, 'Q3 range-avg': 28.285, 'Q4 conj-avg': 9.181, 'Q5 conj-sel': 5.379}
+45222 1 Shared-TID split 388 {'Q1 lookup': 0.195, 'Q2 count-1': 0.155, 'Q3 range-avg': 22.587, 'Q4 conj-avg': 6.094, 'Q5 conj-sel': 5.238}
+45222 1 DET+AEAD 795 {'Q1 lookup': 0.079, 'Q2 count-1': 0.146, 'Q3 range-avg': 24.672, 'Q4 conj-avg': 2.068, 'Q5 conj-sel': 3.319}
+45222 1 AEAD scan 123 {'Q1 lookup': 61.622, 'Q2 count-1': 71.439, 'Q3 range-avg': 68.382, 'Q4 conj-avg': 79.627, 'Q5 conj-sel': 68.427}
+45222 1 3PC-RSS 75 {'Q1 lookup': 12.381, 'Q2 count-1': 1.866, 'Q3 range-avg': 3.029, 'Q4 conj-avg': 3.321, 'Q5 conj-sel': 3.398}
+45222 2 ZS-PRISM 400 {'Q1 lookup': 0.197, 'Q2 count-1': 0.151, 'Q3 range-avg': 25.275, 'Q4 conj-avg': 8.224, 'Q5 conj-sel': 5.429}
+45222 2 Map split 503 {'Q1 lookup': 0.152, 'Q2 count-1': 0.147, 'Q3 range-avg': 28.467, 'Q4 conj-avg': 9.213, 'Q5 conj-sel': 5.411}
+45222 2 Shared-TID split 383 {'Q1 lookup': 0.174, 'Q2 count-1': 0.148, 'Q3 range-avg': 22.539, 'Q4 conj-avg': 6.116, 'Q5 conj-sel': 5.191}
+45222 2 DET+AEAD 791 {'Q1 lookup': 0.079, 'Q2 count-1': 0.147, 'Q3 range-avg': 24.304, 'Q4 conj-avg': 2.089, 'Q5 conj-sel': 3.562}
+45222 2 AEAD scan 117 {'Q1 lookup': 60.924, 'Q2 count-1': 71.557, 'Q3 range-avg': 68.411, 'Q4 conj-avg': 78.325, 'Q5 conj-sel': 69.027}
+45222 2 3PC-RSS 73 {'Q1 lookup': 12.656, 'Q2 count-1': 1.883, 'Q3 range-avg': 3.089, 'Q4 conj-avg': 3.507, 'Q5 conj-sel': 3.623}
+200000 0 ZS-PRISM 2395 {'Q1 lookup': 0.203, 'Q2 count-1': 0.407, 'Q3 range-avg': 125.841, 'Q4 conj-avg': 37.899, 'Q5 conj-sel': 25.717}
+200000 0 Map split 2863 {'Q1 lookup': 0.187, 'Q2 count-1': 0.397, 'Q3 range-avg': 146.467, 'Q4 conj-avg': 47.443, 'Q5 conj-sel': 27.216}
+200000 0 Shared-TID split 2360 {'Q1 lookup': 0.199, 'Q2 count-1': 0.399, 'Q3 range-avg': 107.596, 'Q4 conj-avg': 28.806, 'Q5 conj-sel': 25.049}
+200000 0 DET+AEAD 4022 {'Q1 lookup': 0.085, 'Q2 count-1': 0.371, 'Q3 range-avg': 124.614, 'Q4 conj-avg': 12.44, 'Q5 conj-sel': 19.841}
+200000 0 AEAD scan 578 {'Q1 lookup': 335.135, 'Q2 count-1': 420.248, 'Q3 range-avg': 406.382, 'Q4 conj-avg': 421.14, 'Q5 conj-sel': 405.827}
+200000 0 3PC-RSS 316 {'Q1 lookup': 46.922, 'Q2 count-1': 11.292, 'Q3 range-avg': 15.163, 'Q4 conj-avg': 17.734, 'Q5 conj-sel': 18.279}
+200000 1 ZS-PRISM 2406 {'Q1 lookup': 0.186, 'Q2 count-1': 0.397, 'Q3 range-avg': 126.89, 'Q4 conj-avg': 38.453, 'Q5 conj-sel': 25.999}
+200000 1 Map split 2867 {'Q1 lookup': 0.193, 'Q2 count-1': 0.422, 'Q3 range-avg': 145.452, 'Q4 conj-avg': 47.614, 'Q5 conj-sel': 27.319}
+200000 1 Shared-TID split 2347 {'Q1 lookup': 0.19, 'Q2 count-1': 0.405, 'Q3 range-avg': 107.126, 'Q4 conj-avg': 28.92, 'Q5 conj-sel': 25.239}
+200000 1 DET+AEAD 3997 {'Q1 lookup': 0.063, 'Q2 count-1': 0.387, 'Q3 range-avg': 122.881, 'Q4 conj-avg': 12.47, 'Q5 conj-sel': 18.959}
+200000 1 AEAD scan 628 {'Q1 lookup': 345.165, 'Q2 count-1': 431.116, 'Q3 range-avg': 410.523, 'Q4 conj-avg': 432.194, 'Q5 conj-sel': 418.016}
+200000 1 3PC-RSS 321 {'Q1 lookup': 47.107, 'Q2 count-1': 11.43, 'Q3 range-avg': 16.728, 'Q4 conj-avg': 18.215, 'Q5 conj-sel': 18.619}
+200000 2 ZS-PRISM 2386 {'Q1 lookup': 0.186, 'Q2 count-1': 0.41, 'Q3 range-avg': 125.994, 'Q4 conj-avg': 37.421, 'Q5 conj-sel': 25.934}
+200000 2 Map split 2873 {'Q1 lookup': 0.159, 'Q2 count-1': 0.38, 'Q3 range-avg': 145.403, 'Q4 conj-avg': 46.703, 'Q5 conj-sel': 27.424}
+200000 2 Shared-TID split 2397 {'Q1 lookup': 0.165, 'Q2 count-1': 0.394, 'Q3 range-avg': 108.49, 'Q4 conj-avg': 28.288, 'Q5 conj-sel': 25.139}
+200000 2 DET+AEAD 4024 {'Q1 lookup': 0.085, 'Q2 count-1': 0.373, 'Q3 range-avg': 122.374, 'Q4 conj-avg': 12.145, 'Q5 conj-sel': 18.268}
+200000 2 AEAD scan 581 {'Q1 lookup': 343.695, 'Q2 count-1': 425.816, 'Q3 range-avg': 412.365, 'Q4 conj-avg': 430.685, 'Q5 conj-sel': 413.068}
+200000 2 3PC-RSS 324 {'Q1 lookup': 49.547, 'Q2 count-1': 10.61, 'Q3 range-avg': 16.725, 'Q4 conj-avg': 17.564, 'Q5 conj-sel': 17.818}
+1000000 0 ZS-PRISM 34282 {'Q1 lookup': 0.205, 'Q2 count-1': 1.7, 'Q3 range-avg': 723.638, 'Q4 conj-avg': 209.197, 'Q5 conj-sel': 145.043}
+1000000 0 Map split 36979 {'Q1 lookup': 0.198, 'Q2 count-1': 1.701, 'Q3 range-avg': 885.822, 'Q4 conj-avg': 277.0, 'Q5 conj-sel': 155.038}
+1000000 0 Shared-TID split 35855 {'Q1 lookup': 0.157, 'Q2 count-1': 1.902, 'Q3 range-avg': 603.55, 'Q4 conj-avg': 151.196, 'Q5 conj-sel': 142.19}
+1000000 0 DET+AEAD 33407 {'Q1 lookup': 0.087, 'Q2 count-1': 1.561, 'Q3 range-avg': 655.456, 'Q4 conj-avg': 64.053, 'Q5 conj-sel': 94.315}
+1000000 0 AEAD scan 2826 {'Q1 lookup': 1610.66, 'Q2 count-1': 1979.772, 'Q3 range-avg': 1924.132, 'Q4 conj-avg': 2030.524, 'Q5 conj-sel': 1949.422}
+1000000 0 3PC-RSS 1792 {'Q1 lookup': 295.043, 'Q2 count-1': 61.886, 'Q3 range-avg': 95.576, 'Q4 conj-avg': 93.828, 'Q5 conj-sel': 95.633}
+1000000 1 ZS-PRISM 35044 {'Q1 lookup': 0.194, 'Q2 count-1': 1.706, 'Q3 range-avg': 718.974, 'Q4 conj-avg': 208.956, 'Q5 conj-sel': 146.696}
+1000000 1 Map split 35077 {'Q1 lookup': 0.204, 'Q2 count-1': 1.829, 'Q3 range-avg': 857.316, 'Q4 conj-avg': 274.346, 'Q5 conj-sel': 156.608}
+1000000 1 Shared-TID split 35686 {'Q1 lookup': 0.209, 'Q2 count-1': 1.903, 'Q3 range-avg': 595.445, 'Q4 conj-avg': 151.304, 'Q5 conj-sel': 142.377}
+1000000 1 DET+AEAD 33377 {'Q1 lookup': 0.085, 'Q2 count-1': 1.574, 'Q3 range-avg': 642.729, 'Q4 conj-avg': 63.603, 'Q5 conj-sel': 90.883}
+1000000 1 AEAD scan 2843 {'Q1 lookup': 1606.166, 'Q2 count-1': 1991.763, 'Q3 range-avg': 1934.619, 'Q4 conj-avg': 2014.094, 'Q5 conj-sel': 1992.584}
+1000000 1 3PC-RSS 1442 {'Q1 lookup': 292.049, 'Q2 count-1': 65.449, 'Q3 range-avg': 98.336, 'Q4 conj-avg': 94.939, 'Q5 conj-sel': 99.808}
+1000000 2 ZS-PRISM 37930 {'Q1 lookup': 0.203, 'Q2 count-1': 1.853, 'Q3 range-avg': 721.388, 'Q4 conj-avg': 209.141, 'Q5 conj-sel': 144.844}
+1000000 2 Map split 40063 {'Q1 lookup': 0.205, 'Q2 count-1': 1.735, 'Q3 range-avg': 858.117, 'Q4 conj-avg': 273.576, 'Q5 conj-sel': 156.147}
+1000000 2 Shared-TID split 33865 {'Q1 lookup': 0.195, 'Q2 count-1': 1.808, 'Q3 range-avg': 595.045, 'Q4 conj-avg': 149.867, 'Q5 conj-sel': 142.561}
+1000000 2 DET+AEAD 32711 {'Q1 lookup': 0.087, 'Q2 count-1': 1.702, 'Q3 range-avg': 645.456, 'Q4 conj-avg': 62.554, 'Q5 conj-sel': 94.842}
+1000000 2 AEAD scan 2844 {'Q1 lookup': 1614.768, 'Q2 count-1': 2016.786, 'Q3 range-avg': 1945.249, 'Q4 conj-avg': 2021.57, 'Q5 conj-sel': 1921.223}
+1000000 2 3PC-RSS 1385 {'Q1 lookup': 280.603, 'Q2 count-1': 60.306, 'Q3 range-avg': 105.182, 'Q4 conj-avg': 98.962, 'Q5 conj-sel': 98.279}
+ZS-PRISM 0.0 4249 {'Q1 lookup': 0.2, 'Q2 count-1': 0.3, 'Q3 range-avg': 120.7, 'Q4 conj-avg': 26.7, 'Q5 conj-sel': 65.4} {'median': 6.129853543825448, 'p90': 66.63108302745968, 'n': 200}
+ZS-PRISM 10.0 4249 {'Q1 lookup': 25.7, 'Q2 count-1': 12.9, 'Q3 range-avg': 434.7, 'Q4 conj-avg': 185.0, 'Q5 conj-sel': 116.9} {'median': 45.9408545284532, 'p90': 171.83725000359118, 'n': 200}
+Map split 0.0 4980 {'Q1 lookup': 0.2, 'Q2 count-1': 0.3, 'Q3 range-avg': 139.7, 'Q4 conj-avg': 36.0, 'Q5 conj-sel': 74.4} {'median': 6.4908129861578345, 'p90': 68.9837500685826, 'n': 200}
+Map split 10.0 4980 {'Q1 lookup': 25.4, 'Q2 count-1': 13.0, 'Q3 range-avg': 450.7, 'Q4 conj-avg': 184.0, 'Q5 conj-sel': 172.4} {'median': 49.13077095989138, 'p90': 188.87812504544854, 'n': 200}
+Shared-TID split 0.0 4238 {'Q1 lookup': 0.2, 'Q2 count-1': 0.3, 'Q3 range-avg': 104.6, 'Q4 conj-avg': 21.3, 'Q5 conj-sel': 63.1} {'median': 5.446791998110712, 'p90': 63.253624946810305, 'n': 200}
+Shared-TID split 10.0 4238 {'Q1 lookup': 25.4, 'Q2 count-1': 13.0, 'Q3 range-avg': 423.3, 'Q4 conj-avg': 181.7, 'Q5 conj-sel': 113.9} {'median': 44.912416487932205, 'p90': 171.15800001192838, 'n': 200}
+DET+AEAD 0.0 6512 {'Q1 lookup': 0.1, 'Q2 count-1': 0.3, 'Q3 range-avg': 118.2, 'Q4 conj-avg': 10.2, 'Q5 conj-sel': 28.6} {'median': 2.0822499645873904, 'p90': 21.03408402763307, 'n': 200}
+DET+AEAD 10.0 6512 {'Q1 lookup': 12.7, 'Q2 count-1': 12.9, 'Q3 range-avg': 1056.1, 'Q4 conj-avg': 71.2, 'Q5 conj-sel': 69.2} {'median': 16.666770505253226, 'p90': 100.00824998132885, 'n': 200}
+AEAD scan 0.0 872 {'Q1 lookup': 483.9, 'Q2 count-1': 604.1, 'Q3 range-avg': 593.7, 'Q4 conj-avg': 605.5, 'Q5 conj-sel': 590.9} {'median': 602.8027909924276, 'p90': 618.1030829902738, 'n': 200}
+AEAD scan 10.0 872 {'Q1 lookup': 3697.7, 'Q2 count-1': 3822.8, 'Q3 range-avg': 3805.7, 'Q4 conj-avg': 3809.9, 'Q5 conj-sel': 3810.6} None
+3PC-RSS 0.0 427 {'Q1 lookup': 69.1, 'Q2 count-1': 16.4, 'Q3 range-avg': 23.8, 'Q4 conj-avg': 27.0, 'Q5 conj-sel': 25.0} {'median': 18.902104522567242, 'p90': 24.173999903723598, 'n': 200}
+3PC-RSS 10.0 427 {'Q1 lookup': 2415.1, 'Q2 count-1': 478.8, 'Q3 range-avg': 833.9, 'Q4 conj-avg': 878.5, 'Q5 conj-sel': 877.3} {'median': 658.9892084593885, 'p90': 768.611375009641, 'n': 200}
+Matplotlib is building the font cache; this may take a moment.
+figures written to artifact/figures
+BCKBQfive        696\,kB
+BCKBQfour        732\,kB
+CensusFaster     26\%
+CensusSlower     0.00\,ms
+CorrQueries      1{,}000
+IngMap           90{,}480
+IngPaillier      220
+IngZS            113{,}192
+LocalFaster      15\%
+LocalSlower      0.04\,ms
+MPCLocalQfour    3.51\,ms
+MPCLookupMillion 292\,ms
+MPCQfourTen      214\,ms
+MPCQtwoMillion   61.9\,ms
+MPCRounds        10
+MPCSpeedup       2.2$\times$
+MapBootMillion   903\,ms
+MapBootThree     3.28\,s
+MapHeapMillion   399\,MB
+MapHeapPerRec    399
+MaxIQR           5\%
+MillionIngZS     35.04\,s
+MillionQfourZS   209\,ms
+MillionScan      2.02\,s
+NAdult           45{,}222
+PDKBQfive        13\,kB
+PDKBQfour        295\,kB
+PDSaveQfive      55.3$\times$
+PDSaveQfour      2.5$\times$
+PaillierSlowdown 514$\times$
+SelQfive         91
+SelQfour         976
+SelQthree        18{,}942
+SelQtwo          6{,}008
+SnapRankZS       0.00\%
+SnapShareSum     100\%
+SnapShared       100\%
+SnapZS           0\%
+TraceLinkedBC    0.0\%
+TraceLinkedPD    2.0\%
+TraceSetBC       4{,}845
+TraceSetPD       534
+UtilMdavAvg      0.26\%
+UtilMdavFive     1.4\%
+UtilMondFive     5.2\%
+UtilMondTail     64\%
+WanAdaptiveWin   1.9$\times$
+WanAutoBestFrac  26 of 30
+WanBChigh        86.5\,ms
+WanBClow         65.5\,ms
+WanMapWorse      1.7$\times$
+WanPDhigh        267\,ms
+WanPDlow         57.3\,ms
+WanRegret        0\%
+WanRegretMax     25\%
+WanScan          527\,ms
+WanSharedDiff    2\%
+WritePaillier    4.7
+WriteZS          0.15/0.16/0.12
+ZSBoot           6\,\textmu s
+ZSLocalQfour     7.81\,ms
+ZSLookupMillion  0.20\,ms
+ZSQfourTen       96.7\,ms
+ZSQtwoMillion    1.71\,ms
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+-- This is a 10 point document.
+)
+** ATTENTION: Overriding command lockouts (line 2).
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1ptm.fd))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/cite/cite.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-comm
+on.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-late
+x.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.
+tex (/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/pgf.revision.tex))
+) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibra
+ryfiltered.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdf
+tex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-com
+mon-pdf.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoft
+path.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprot
+ocol.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathparser.cod
+e.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+basic.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+trigonometric.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+random.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+comparison.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+base.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+round.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+misc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+integerarithmetics.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code
+.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoin
+ts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+construct.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+usage.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescop
+es.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregrap
+hicstate.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sformations.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequic
+k.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobje
+cts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+processing.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearro
+ws.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshad
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimag
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexte
+rnal.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelaye
+rs.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sparency.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatt
+erns.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.
+code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleshape
+s.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-0-65.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-1-18.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgffor.code.
+tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tik
+z.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibrarypl
+othandlers.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmodulematri
+x.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibraryar
+rows.meta.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarybackgrounds.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/gettitlestring/gettitlestr
+ing.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)
+)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilechec
+k.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/uniquecounter/uniquecounte
+r.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype-pdftex.d
+ef) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.cfg)
+) (./generated/numbers.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef) (./main.aux)
+-- Lines per column: 56 (exact).
+(/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+)) (./main.out) (./main.out)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+Underfull \vbox (badness 1968) has occurred while \output is active [1{/usr/loc
+al/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/t
+exlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/t1lmtt.fd)
+(./fig_arch.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/omsptm.fd))
+Underfull \hbox (badness 5374) in paragraph at lines 115--116
+\T1/lmtt/m/n/10 (38, F) \T1/ptm/m/n/10 (+20) at $\OML/cmm/m/it/10 S[]$\T1/ptm/m
+/n/10 (+20) , \T1/lmtt/m/n/10 (Bachelors, Married) \T1/ptm/m/n/10 (+20) at $\OM
+L/cmm/m/it/10 S[]$\T1/ptm/m/n/10 (+20) , and
+[2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+[3] (./fig_seq.tex) [4] (./generated/tab_local.tex) [5 <../artifact/figures/sta
+te.pdf>] (./generated/tab_census.tex) [6] (./main.bbl [7 <../artifact/figures/w
+an.pdf> <../artifact/figures/attack.pdf>])
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[8] (./main.aux) )
+(see the transcript file for additional information)</usr/local/texlive/2026bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/202
+6basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/tex
+live/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/l
+ocal/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2026basic/t
+exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-
+dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026basic/tex
+mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (8 pages, 454273 bytes).
+Transcript written on main.log.
+This is BibTeX, Version 0.99e (TeX Live 2026)
+The top-level auxiliary file: main.aux
+The style file: IEEEtran.bst
+Database file #1: refs.bib
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+-- This is a 10 point document.
+)
+** ATTENTION: Overriding command lockouts (line 2).
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1ptm.fd))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/cite/cite.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-comm
+on.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-late
+x.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.
+tex (/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/pgf.revision.tex))
+) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibra
+ryfiltered.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdf
+tex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-com
+mon-pdf.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoft
+path.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprot
+ocol.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathparser.cod
+e.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+basic.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+trigonometric.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+random.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+comparison.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+base.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+round.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+misc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+integerarithmetics.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code
+.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoin
+ts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+construct.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+usage.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescop
+es.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregrap
+hicstate.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sformations.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequic
+k.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobje
+cts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+processing.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearro
+ws.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshad
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimag
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexte
+rnal.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelaye
+rs.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sparency.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatt
+erns.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.
+code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleshape
+s.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-0-65.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-1-18.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgffor.code.
+tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tik
+z.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibrarypl
+othandlers.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmodulematri
+x.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibraryar
+rows.meta.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarybackgrounds.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/gettitlestring/gettitlestr
+ing.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)
+)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilechec
+k.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/uniquecounter/uniquecounte
+r.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype-pdftex.d
+ef) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.cfg)
+) (./generated/numbers.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef) (./main.aux)
+-- Lines per column: 56 (exact).
+(/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+)) (./main.out) (./main.out)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+Underfull \vbox (badness 1968) has occurred while \output is active [1{/usr/loc
+al/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/t
+exlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/t1lmtt.fd)
+(./fig_arch.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/omsptm.fd))
+Underfull \hbox (badness 5374) in paragraph at lines 115--116
+\T1/lmtt/m/n/10 (38, F) \T1/ptm/m/n/10 (+20) at $\OML/cmm/m/it/10 S[]$\T1/ptm/m
+/n/10 (+20) , \T1/lmtt/m/n/10 (Bachelors, Married) \T1/ptm/m/n/10 (+20) at $\OM
+L/cmm/m/it/10 S[]$\T1/ptm/m/n/10 (+20) , and
+[2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+[3] (./fig_seq.tex) [4] (./generated/tab_local.tex) [5 <../artifact/figures/sta
+te.pdf>] (./generated/tab_census.tex) [6] (./main.bbl [7 <../artifact/figures/w
+an.pdf> <../artifact/figures/attack.pdf>])
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[8] (./main.aux) )
+(see the transcript file for additional information)</usr/local/texlive/2026bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/202
+6basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/tex
+live/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/l
+ocal/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2026basic/t
+exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-
+dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026basic/tex
+mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (8 pages, 454273 bytes).
+Transcript written on main.log.
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/ieeetran/
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ot1ptm.fd)
+-- Using 8.5in x 11in (letter) paper.
+-- Using PDF output.
+-- This is a 10 point document.
+)
+** ATTENTION: Overriding command lockouts (line 2).
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1ptm.fd))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/cite/cite.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-def/pdftex.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/tools/array.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-comm
+on.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfutil-late
+x.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.
+tex (/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/pgf.revision.tex))
+) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibra
+ryfiltered.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdf
+tex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-com
+mon-pdf.def)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoft
+path.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprot
+ocol.code.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.cod
+e.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathparser.cod
+e.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+basic.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+trigonometric.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+random.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+comparison.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+base.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+round.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+misc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.
+integerarithmetics.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.
+tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code
+.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoin
+ts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+construct.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+usage.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescop
+es.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregrap
+hicstate.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sformations.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequic
+k.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobje
+cts.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepath
+processing.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearro
+ws.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshad
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimag
+e.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexte
+rnal.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelaye
+rs.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretran
+sparency.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatt
+erns.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.
+code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleshape
+s.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.
+code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-0-65.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-ve
+rsion-1-18.sty))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code
+.tex)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/utilities/pgffor.code.
+tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tik
+z.code.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibrarypl
+othandlers.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/modules/pgfmodulematri
+x.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarytopaths.code.tex)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarypositioning.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/libraries/pgflibraryar
+rows.meta.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibraryfit.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarybackgrounds.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pgf/frontendlayer/tikz/lib
+raries/tikzlibrarycalc.code.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/iftex.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.
+sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/infwarerr/infwarerr.sty)))
+ (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/refcount/refcount.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/gettitlestring/gettitlestr
+ing.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/kvoptions/kvoptions.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/puenc.def)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bitset/bitset.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty)
+)) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/rerunfilecheck/rerunfilechec
+k.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/uniquecounter/uniquecounte
+r.sty)))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype-pdftex.d
+ef) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/microtype.cfg)
+) (./generated/numbers.tex)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef) (./main.aux)
+-- Lines per column: 56 (exact).
+(/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+)) (./main.out) (./main.out)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-ptm.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-cmr.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/microtype/mt-msb.cfg)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+Underfull \vbox (badness 1968) has occurred while \output is active [1{/usr/loc
+al/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/t
+exlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/lm/t1lmtt.fd)
+(./fig_arch.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/omsptm.fd))
+Underfull \hbox (badness 5374) in paragraph at lines 115--116
+\T1/lmtt/m/n/10 (38, F) \T1/ptm/m/n/10 (+20) at $\OML/cmm/m/it/10 S[]$\T1/ptm/m
+/n/10 (+20) , \T1/lmtt/m/n/10 (Bachelors, Married) \T1/ptm/m/n/10 (+20) at $\OM
+L/cmm/m/it/10 S[]$\T1/ptm/m/n/10 (+20) , and
+[2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
+[3] (./fig_seq.tex) [4] (./generated/tab_local.tex) [5 <../artifact/figures/sta
+te.pdf>] (./generated/tab_census.tex) [6] (./main.bbl [7 <../artifact/figures/w
+an.pdf> <../artifact/figures/attack.pdf>])
+
+** Conference Paper **
+Before submitting the final camera ready copy, remember to:
+
+ 1. Manually equalize the lengths of two columns on the last page
+ of your paper;
+
+ 2. Ensure that any PostScript and/or PDF output post-processing
+ uses only Type 1 fonts and that every step in the generation
+ process uses the appropriate paper size.
+
+[8] (./main.aux) )
+(see the transcript file for additional information)</usr/local/texlive/2026bas
+ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/202
+6basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/tex
+live/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/l
+ocal/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.p
+fb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr9.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026basic/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026basic/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2026basic/t
+exmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2026basic/texmf-
+dist/fonts/type1/public/lm/lmtt8.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026basic/tex
+mf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2026basic/texmf-di
+st/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2026basic/texmf-dist/f
+onts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/
+type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (8 pages, 454273 bytes).
+Transcript written on main.log.
