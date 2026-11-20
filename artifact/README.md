@@ -49,11 +49,14 @@ The shipped `results/` directory is the output of one such run (`results/run_all
 To check the implementation without the benchmarks:
 
 ```sh
-python -m unittest discover -s tests -v          # 13 tests, about 1 min
+python -m unittest discover -s tests -v          # 14 tests, about 1 min
 ```
 
 The differential tests compare every system against a plaintext reference
-on randomized queries interleaved with inserts, updates, and deletes.
+on randomized queries interleaved with inserts, updates, and deletes. They
+check soundness and completeness (for the split systems, the selected row set
+equals the reference set) and freshness (each write is visible on read-back).
+A mutation test confirms that a proxy dropping one result row is caught.
 
 Keys are drawn fresh from the OS CSPRNG on every run; no fixed keys or seeds
 touch the cryptography. Data sampling and workload generation use fixed seeds,

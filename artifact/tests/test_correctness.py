@@ -67,6 +67,15 @@ class PrimitiveTests(unittest.TestCase):
         self.assertEqual(len(m.snapshot()), m.state_bytes())
 
 
+def matches(r, q) -> bool:
+    """Plaintext predicate evaluation, as in data.reference."""
+    for a, v in q.predicates():
+        x = getattr(r, a)
+        if not (v[0] <= x <= v[1] if a == "age" else x == v):
+            return False
+    return True
+
+
 class DifferentialTests(unittest.TestCase):
     N = 4000
     M = 1000
@@ -81,20 +90,35 @@ class DifferentialTests(unittest.TestCase):
         try:
             sys_ = make(cl)
             sys_.insert(recs)
+            # Split systems expose the selected row set, so we can check it directly.
+            rowlevel = isinstance(sys_, SplitSystem)
+            rid_of = {r.pid: sys_._lookup_rid(r.pid) for r in recs} if rowlevel else {}
             qs = random_queries(recs, m, seed=3)
             for i, q in enumerate(qs):
-                if i % 25 == 0:  # interleave writes
+                if i % 25 == 0:  # interleave writes; each must be visible immediately (freshness)
                     victim = rng.choice(truth)
                     newv = rng.randint(1, 99)
                     self.assertTrue(sys_.update(victim.pid, newv))
                     truth[truth.index(victim)] = victim._replace(hours=newv)
+                    self.assertEqual(sys_.query(Query("lookup", pid=victim.pid)).hours, newv)
                     gone = rng.choice(truth)
                     self.assertTrue(sys_.delete(gone.pid))
                     truth.remove(gone)
+                    rid_of.pop(gone.pid, None)
+                    self.assertIsNone(sys_.query(Query("lookup", pid=gone.pid)))
+                    self.assertFalse(sys_.update(gone.pid, newv))
                     fresh = scaled(n, seed=1000 + i)[0]._replace(pid=f"N{i:06d}")
                     sys_.insert([fresh])
                     truth.append(fresh)
+                    self.assertEqual(sys_.query(Query("lookup", pid=fresh.pid)), fresh)
+                    if rowlevel:
+                        rid_of[fresh.pid] = sys_._lookup_rid(fresh.pid)
                 self.assertEqual(sys_.query(q), reference(truth, q), msg=f"{q}")
+                if rowlevel and sys_.last_rids is not None:
+                    got = {x.tobytes() for x in sys_.last_rids}
+                    want = {rid_of[r.pid] for r in truth if matches(r, q)}
+                    self.assertLessEqual(got, want, msg=f"soundness: extra rows for {q}")
+                    self.assertLessEqual(want, got, msg=f"completeness: missing rows for {q}")
             for r in rng.sample(truth, 20):
                 self.assertEqual(sys_.query(Query("lookup", pid=r.pid)), r)
         finally:
@@ -108,6 +132,17 @@ class DifferentialTests(unittest.TestCase):
 
     def test_zs_prism_broadcast(self):
         self._exercise(lambda c: SplitSystem("prp", c, plan="broadcast"), 3)
+
+    def test_rowset_check_detects_a_missing_row(self):
+        """Mutation check: a proxy that drops one selected row must fail the row-set comparison."""
+        class Faulty(SplitSystem):
+            def query(self, q):
+                out = super().query(q)
+                if self.last_rids is not None and len(self.last_rids) > 1:
+                    self.last_rids = self.last_rids[1:]
+                return out
+        with self.assertRaisesRegex(AssertionError, "completeness"):
+            self._exercise(lambda c: Faulty("prp", c, plan="auto"), 3, n=1000, m=200)
 
     def test_map_split(self):
         self._exercise(lambda c: SplitSystem("map", c), 3)

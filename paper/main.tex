@@ -22,30 +22,20 @@
 \title{ZS-PRISM: Stateless and Unlinkable Record Linkage for Privacy-Preserving Multi-Cloud Data Splitting}
 
 \author{
-\IEEEauthorblockN{Shivambu Dev Pandey}
-\IEEEauthorblockA{Department of Computer Science and Engineering\\
-Indian Institute of Information Technology Dharwad, India}
-\and
-\IEEEauthorblockN{Sarthak Goyal}
-\IEEEauthorblockA{Department of Computer Science and Engineering\\
-Indian Institute of Information Technology Dharwad, India}
-\and
-\IEEEauthorblockN{Anas Khan}
-\IEEEauthorblockA{Department of Computer Science and Engineering\\
-Indian Institute of Information Technology Dharwad, India}
-\and
-\IEEEauthorblockN{Mayank Bansal}
-\IEEEauthorblockA{Department of Electronics and Communication Engineering\\
-Indian Institute of Information Technology Dharwad, India}
-\and
-\IEEEauthorblockN{Malay Kumar}
-\IEEEauthorblockA{Department of Computer Science and Engineering\\
+\IEEEauthorblockN{Shivambu Dev Pandey\IEEEauthorrefmark{1},
+Sarthak Goyal\IEEEauthorrefmark{1},
+Anas Khan\IEEEauthorrefmark{1},
+Mayank Bansal\IEEEauthorrefmark{2},
+Malay Kumar\IEEEauthorrefmark{1}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Computer Science and Engineering,
+Indian Institute of Information Technology Dharwad, India\\
+\IEEEauthorrefmark{2}Department of Electronics and Communication Engineering,
 Indian Institute of Information Technology Dharwad, India}}
 
 \maketitle
 
 \begin{abstract}
-Vertical data splitting divides the attributes of a sensitive relation into fragments and stores each fragment at a different cloud provider, on the assumption that the providers do not collude. Domingo-Ferrer \emph{et al.} surveyed this approach in 2019 as a way to keep outsourced data directly queryable at a moderate cost. When a query needs attributes from several fragments, a proxy has to put the matching records back together. This paper presents \sys{}, a splitting proxy that improves the way this linkage is done. Existing designs give all fragments of a record the same identifier, so colluding providers can simply join on it, or they keep a linkage map with one entry per record at the proxy, and this map has to be replicated and restored whenever a proxy fails. \sys{} removes both drawbacks. It has three parts. (C1) \emph{Stateless root-key linkage}: the key of a fragment is an AES permutation of a random row identifier together with the provider index. Such keys cannot be linked across providers, the proxy can invert them, and the proxy stores nothing persistently except a 32-byte root key. (C2) \emph{Dual-share splitting}: the numeric measure is stored as two additive shares at two providers, and an update rewrites both shares, which prevents either provider from learning how the value changed. (C3) \emph{Selectivity-ordered sequential conjunctive execution}: the proxy visits providers in ascending order of predicate cardinality and forwards only the smallest candidate set, and on high-latency links a cost-based probe decides how to proceed. We evaluated \sys{} against seven baselines on two UCI data sets. It returns the exact answer to every query, matches the speed of map-based splitting on one host, and is up to \LocalFaster{} faster on joins. At $10^6$ records it replaces the 60\,MB map by 32 bytes, which cuts proxy bootstrap from \MapBootMillion{} to \ZSBoot{}. Compared with broadcast execution it transfers up to \PDSaveQfive{} less data, and in the WAN setting used by SecretFlow-SCQL it answers cross-provider joins \ScqlSpeedupMin{}--\ScqlSpeedupMax{} faster than SCQL. The exhaustive evaluation shows that \sys{} is practical to adopt as a standard linkage layer for splitting-based cloud storage.
+Vertical data splitting divides the attributes of a sensitive relation into fragments and stores each fragment at a different cloud provider, on the assumption that the providers do not collude. Domingo-Ferrer \emph{et al.} surveyed this approach in 2019 as a way to keep outsourced data directly queryable at a moderate cost. When a query needs attributes from several fragments, a proxy has to put the matching records back together. This paper presents \sys{}, a splitting proxy that improves the way this linkage is done. Existing designs give all fragments of a record the same identifier, so colluding providers can simply join on it, or they keep a linkage map with one entry per record at the proxy, and this map has to be replicated and restored whenever a proxy fails. \sys{} removes both drawbacks. It has three parts. (C1) \emph{Stateless root-key linkage}: the key of a fragment is an AES permutation of a random row identifier together with the provider index. Such keys cannot be linked across providers, the proxy can invert them, and the proxy stores nothing persistently except a 32-byte root key. (C2) \emph{Dual-share splitting}: the numeric measure is stored as two additive shares at two providers, and an update rewrites both shares, which prevents either provider from learning how the value changed. (C3) \emph{Selectivity-ordered sequential conjunctive execution}: the proxy visits providers in ascending order of predicate cardinality and forwards only the smallest candidate set, and on high-latency links a cost-based probe decides how to proceed. We evaluated \sys{} against seven baselines on two UCI data sets. It returns the exact answer to every query, matches the speed of map-based splitting on one host, and is up to \LocalFaster{} faster on joins. At $10^6$ records it replaces the 60\,MB map by 32 bytes, which cuts proxy bootstrap from \MapBootMillion{} to \ZSBoot{}. Compared with broadcast execution it transfers up to \PDSaveQfiveNum{} times less data, and in the WAN setting used by SecretFlow-SCQL it answers cross-provider joins \ScqlSpeedupMinNum{} to \ScqlSpeedupMaxNum{} times faster than SCQL. The exhaustive evaluation shows that \sys{} is practical to adopt as a standard linkage layer for splitting-based cloud storage.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -87,7 +77,7 @@ $k$-anonymity \cite{sweeney2002k} and microaggregation \cite{domingo2005ordinal}
 
 \begin{table*}[t]
 \centering
-\caption{Comparison of design families for outsourced relational queries.}
+\caption{Comparison of design families for privacy-preserving outsourced relational queries: servers, trust assumption, leakage, proxy linkage state and source of cost figures.}
 \label{tab:related}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -113,20 +103,25 @@ Anonymized release \cite{lefevre2006mondrian,domingo2005ordinal} & any & none & 
 
 % =====================================================================
 \section{System and Threat Model}\label{sec:model}
-\textbf{Parties.} The data owner, its applications and the \emph{proxy} are trusted. All operations pass through the proxy, and there may be several replicas of it. Storage is provided by $m=3$ providers $S_0,S_1,S_2$ run by different organizations, each of which stores one fragment and exposes a SQL interface to it (Fig.~\ref{fig:arch}).
+This section describes the setting in which \sys{} runs, the adversary it is designed against, and the goals that the design in Section~\ref{sec:design} has to meet.
 
-\textbf{Data and fragmentation.} A record has a direct identifier, several quasi-identifiers (QIs), a sensitive attribute and a numeric measure. In the case of Adult \cite{adult1996}, $S_0$ stores \texttt{age, sex}, $S_1$ stores \texttt{education, marital}, and $S_2$ stores \texttt{occupation, race, country}. No provider then sees more than two of the six QIs, and the sensitive attribute \texttt{occupation} is kept at a different provider than the identifier. The identifier itself exists at $S_0$ only as a keyed token. The measure, \texttt{hours-per-week}, is never stored in clear. $S_0$ and $S_1$ each hold one additive share of it. How to derive a fragmentation from confidentiality constraints is a separate problem with its own literature \cite{ciriani2010combining,ganapathy2012distributing}, and we do not address it here. \sys{} works with any fragmentation.
+\subsection{System Model}
+A data owner outsources one sensitive relation to $m=3$ storage providers $S_0,S_1,S_2$, which are run by different organizations. Each provider stores one vertical fragment of the relation and exposes a SQL interface to it. The owner's applications do not contact the providers directly. Every read and write passes through a \emph{proxy}, which may run as several replicas (Fig.~\ref{fig:arch}). The data owner, its applications and the proxy are trusted.
 
-\textbf{Adversary.} Providers are honest but curious. They answer every request correctly, but a provider remembers its fragment, the predicates it was asked to evaluate, and every handle it received or returned. Providers may also form coalitions and pool their \emph{snapshots} (the stored tables) or their \emph{traces} (the request logs). TLS protects against attacks on the network. A provider that returns wrong results is outside our model; detecting it would require authenticated data structures \cite{li2006authenticated}.
+A record has a direct identifier, several quasi-identifiers (QIs), a sensitive attribute and a numeric measure. In the case of Adult \cite{adult1996}, $S_0$ stores \texttt{age, sex}, $S_1$ stores \texttt{education, marital}, and $S_2$ stores \texttt{occupation, race, country}. No provider then sees more than two of the six QIs, and the sensitive attribute \texttt{occupation} is kept at a different provider than the identifier. The identifier itself exists at $S_0$ only as a keyed token. The measure, \texttt{hours-per-week}, is never stored in clear: $S_0$ and $S_1$ each hold one additive share of it. How to derive a fragmentation from confidentiality constraints is a separate problem with its own literature \cite{ciriani2010combining,ganapathy2012distributing}, and we do not address it here. \sys{} works with any fragmentation.
 
-\textbf{Goals.} We set four goals. (G1) Supported queries return exact answers. (G2) The proxy keeps no persistent state per record. (G3) A coalition that is missing at least one share holder cannot link stored data across providers. (G4) The cost is within a small factor of a design with the same placement and a linkage map. As in other splitting systems, access patterns, result sizes and the clear values in a provider's own fragment stay visible. We quantify the linkage that results from them in Section~\ref{sec:attacks}.
+Fig.~\ref{fig:arch} shows the two paths through the system. On ingestion (I), the proxy picks a row identifier $r$ and computes the handles $h_{r,0},h_{r,1},h_{r,2}$ (C1). It replaces the identifier by a keyed token, splits the measure into the shares $s_0$ and $s_1$ (C2), and stores one fragment at each provider. A query (C3) proceeds in seven steps. \textcircled{\scriptsize 1} The application sends the query to the proxy. \textcircled{\scriptsize 2} The proxy sends each provider its predicate $\phi_c$. \textcircled{\scriptsize 3} The provider replies with the cardinality $c_c$ and, if $c_c\le\tau_c$, also with the matching rows. \textcircled{\scriptsize 4} The proxy inverts the handles and translates them. \textcircled{\scriptsize 5} The candidates are sent to the next provider, in ascending order of $c_c$. \textcircled{\scriptsize 6} That provider returns its matches with their shares, or with a modular sum of shares. \textcircled{\scriptsize 7} The proxy returns the result to the application. Throughout, $K$ is the only persistent data at the proxy, and no provider learns the identifier, the measure, or the handles used at another provider.
 
-\textbf{Workflow.} Fig.~\ref{fig:arch} shows the two paths through the system. On ingestion (I), the proxy picks a row identifier $r$ and computes the handles $h_{r,0},h_{r,1},h_{r,2}$ (C1). It replaces the identifier by a keyed token, splits the measure into the shares $s_0$ and $s_1$ (C2), and stores one fragment at each provider. A query (C3) proceeds in seven steps. \textcircled{\scriptsize 1} The application sends the query to the proxy. \textcircled{\scriptsize 2} The proxy sends each provider its predicate $\phi_c$. \textcircled{\scriptsize 3} The provider replies with the cardinality $c_c$ and, if $c_c\le\tau_c$, also with the matching rows. \textcircled{\scriptsize 4} The proxy inverts the handles and translates them. \textcircled{\scriptsize 5} The candidates are sent to the next provider, in ascending order of $c_c$. \textcircled{\scriptsize 6} That provider returns its matches with their shares, or with a modular sum of shares. \textcircled{\scriptsize 7} The proxy returns the result to the application. Throughout, $K$ is the only persistent data at the proxy, and no provider learns the identifier, the measure, or the handles used at another provider.
+\subsection{Threat Model}
+We assume honest-but-curious providers. A provider answers every request correctly, but it remembers its fragment, the predicates it was asked to evaluate, and every handle it received or returned. Providers may also form coalitions and pool their \emph{snapshots} (the stored tables) or their \emph{traces} (the request logs). TLS protects the links against network attackers. A provider that returns wrong results is outside our model; detecting it would require authenticated data structures \cite{li2006authenticated}. As in other splitting systems, access patterns, result sizes and the clear values in a provider's own fragment stay visible. We quantify the linkage that results from them in Section~\ref{sec:attacks}.
+
+\subsection{Design Goals}
+\sys{} has four goals. (G1) Supported queries return exact answers. (G2) The proxy keeps no persistent state per record. (G3) A coalition that is missing at least one share holder cannot link stored data across providers. (G4) The cost is within a small factor of a design with the same placement and a linkage map.
 
 \begin{figure*}[t]
 \centering
 \resizebox{\textwidth}{!}{\input{fig_arch}}
-\caption{\sys{} architecture: ingestion path (I) and query path (1)--(7).}
+\caption{System architecture of \sys{}, showing the ingestion path (I) and the query path (1)--(7) between the application, the proxy and the three storage providers.}
 \label{fig:arch}
 \end{figure*}
 
@@ -136,7 +131,7 @@ One record serves as the example in this section. Its fragments are \texttt{(38,
 
 \begin{table}[t]
 \centering
-\caption{Notation.}
+\caption{Summary of notation.}
 \label{tab:notation}
 \scriptsize
 \begin{tabular}{@{}ll@{}}
@@ -159,7 +154,7 @@ $\tau_c$ & threshold for returning rows inline\\
 \end{tabular}
 \end{table}
 
-\subsection{C1: Stateless root-key linkage}\label{sec:c1}
+\subsection{Stateless Root-Key Linkage}\label{sec:c1}
 
 On insertion the proxy draws a fresh row identifier $r\in\{0,1\}^{96}$ from the OS CSPRNG. Provider $c$ stores its fragment of the record under the handle
 \begin{equation}
@@ -193,7 +188,7 @@ The direct identifier is stored only at $S_0$, as a keyed token \cite{rfc2104}
 \end{equation}
 $S_0$ can index the token and locate a record by exact match. All it learns is whether two identifiers are equal, and the other providers do not learn even that.
 
-\subsection{C2: Dual-share splitting with refresh}\label{sec:c2}
+\subsection{Dual-Share Splitting with Refresh}\label{sec:c2}
 The proxy creates two additive shares of the measure $v$, one for $S_0$ and one for $S_1$:
 \begin{equation}
   s_0\xleftarrow{\$}\mathbb{Z}_q,\qquad s_1=(v-s_0)\bmod q,\qquad q=2^{61}-1.
@@ -217,7 +212,7 @@ An alternative would be to compute the mask as a PRF of the row identifier and a
 \end{equation}
 and receives 8 bytes instead of $|C|$ shares. To the provider this sum is uniformly distributed. For an update or a deletion, the proxy first looks up the token at $S_0$ to obtain $r$ and then issues the writes to the providers in parallel. In a deployment, a write that touches two providers has to be made atomic, for which two-phase commit or Paxos commit can be used unchanged \cite{gray2006consensus}.
 
-\subsection{C3: Selectivity-ordered sequential conjunctive execution}\label{sec:query}
+\subsection{Selectivity-Ordered Sequential Conjunctive Execution}\label{sec:query}
 We consider conjunctive queries $\sigma_{\phi_0\wedge\phi_1\wedge\phi_2}$, optionally with \texttt{COUNT} or \texttt{AVG}. The proxy breaks the condition into one predicate $\phi_c$ per provider. When all predicates fall on the same fragment, that provider answers the query alone. Otherwise there are two well-known plans, shown in Fig.~\ref{fig:seq} for Q4 (Table~\ref{tab:workloads}). In Q4, $\phi_0$ is a condition on age, $\phi_1$ on education and $\phi_2$ on occupation; $T_{c\to c'}$ in the figure is the translation of Eq.~(\ref{eq:translate}), carried out by the proxy. With \emph{broadcast}, every provider receives its predicate at once and the proxy intersects the row identifiers that come back. One round trip suffices, but the transferred data grow with $\sum_c c_c$, where $c_c=|\sigma_{\phi_c}|$ is the number of rows matching $\phi_c$. With \emph{selectivity-ordered semi-join pushdown} \cite{bernstein1981semijoin}, the proxy first asks every provider for $c_c$, and the provider with the smallest $c_c$ evaluates its predicate first. The proxy inverts the returned handles (C1), translates them, and passes them as candidates to the provider with the next larger $c_c$, and so on. Now the transferred data grow only with $c_{\min}$, at the price of one round trip per provider plus one for the probe. Which provider goes first is decided per query; the schema does not fix it. Q4 runs in the order $S_2\to S_1\to S_0$ because the occupation predicate matches the fewest rows, whereas Q5 runs $S_0\to S_1\to S_2$ because few rows satisfy its age and sex conditions. A share holder returns its shares together with the handles. A share holder without a predicate in the query is asked for a modular sum in a final round.
 
 \textbf{Cost model.} Let $\rho$ be the round-trip time, $B$ the link rate and $w_c$ the size in bytes of a result row from $S_c$. Processing one handle costs $\alpha_s$ at a provider and $\alpha_p$ at the proxy, so one result row costs $\beta_c=w_c/B+\alpha_s+\alpha_p$. We sort the providers such that $c_{(1)}\le\dots\le c_{(m)}$ and estimate the intermediate result sizes as $n_1=c_{(1)}$ and $n_i=n_{i-1}c_{(i)}/N$. This assumes independent attributes, as System R does \cite{selinger1979access}. The two plans then cost
@@ -237,7 +232,7 @@ In other words, rows are included whenever sending them is cheaper than one more
 \begin{figure}[t]
 \centering
 \resizebox{\columnwidth}{!}{\input{fig_seq}}
-\caption{Message flow of query Q4 under (a) pushdown and (b) broadcast.}
+\caption{Message flow between the proxy and the providers for query Q4 under (a) the pushdown plan and (b) the broadcast plan.}
 \label{fig:seq}
 \end{figure}
 
@@ -253,7 +248,7 @@ In other words, rows are included whenever sending them is cheaper than one more
 
 \begin{table}[t]
 \centering
-\caption{Workloads on Adult (selectivity at $N=45{,}222$).}
+\caption{Query workloads Q1--Q5 on the Adult data set and number of matching rows at $N=45{,}222$.}
 \label{tab:workloads}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -270,59 +265,59 @@ Q5 & \texttt{age}$\in[70,75]\wedge$Female$\wedge$Widowed$\wedge$United-States & 
 \end{tabular}
 \end{table}
 
-\subsection{Correctness}
-Each system is tested differentially against a plaintext reference. One test issues \CorrQueries{} random conjunctive \texttt{COUNT}/\texttt{AVG} queries over one to four attributes, interleaved with updates, deletions, insertions and lookups of full records. DET+Paillier and the AEAD scan are tested with 300 queries. \sys{} is tested once for each of its three plans. Every answer in every test equals the reference. For averages we compare count and sum separately, so rounding plays no role.
+\subsection{Correctness Validation}
+We test every system differentially against a plaintext evaluation of the same queries and check the three properties usually required of an outsourced query result \cite{li2006authenticated}: \emph{soundness} (every returned row satisfies the query), \emph{completeness} (every row that satisfies the query is returned) and \emph{freshness} (the answer reflects all preceding writes). One test issues \CorrQueries{} random conjunctive \texttt{COUNT}/\texttt{AVG} queries over one to four attributes on 4,000 records, and every 25 queries it updates, deletes and inserts a record. DET+Paillier and the AEAD scan are tested with 300 queries, and 3PC-RSS, which is bulk-loaded, with 300 queries and no writes. \sys{} is tested once for each of its three plans. For the split systems the test compares the set of selected row identifiers with the reference set, which checks soundness and completeness directly. This covers 826 of the 1,000 queries; the others are counts over a single fragment, which one provider answers with a SQL \texttt{COUNT}. For all systems the test also compares count and sum separately, so rounding plays no role. Freshness is checked after each write by reading the record back: an updated record returns its new measure, a deleted record is no longer found and cannot be updated, and an inserted record is returned in full. All checks pass. To confirm that the row-set comparison detects errors, the suite also runs a faulty proxy that drops one row from each result, and the test fails on the first affected query. Outside these tests, every timed query is checked against the plaintext answer as described above.
 
-\subsection{C1: Proxy state and failover}
+\subsection{Proxy State and Recovery}
 Fig.~\ref{fig:state} compares the cost of the linkage map with what \sys{} needs instead. Panel (a) shows the persistent linkage state, and panel (b) the time a new replica needs before it can answer cross-fragment queries. A map entry consists of a 12-byte row identifier and three 16-byte handles, i.e., 60 bytes per record in the most compact encoding. As an in-memory hash map, an entry occupies \MapHeapPerRec{} bytes. At $10^6$ records, a proxy replica that starts or recovers must fetch 60\,MB and spends \MapBootMillion{} rebuilding the maps before it can answer a cross-fragment query. At $3\times10^6$ records the rebuild takes \MapBootThree{}. A \sys{} replica reads 32 bytes and derives the two subkeys in \ZSBoot{}. We expect the map to cost more in a real deployment than in our measurement, since replicas that insert concurrently must also keep their maps consistent, whereas \sys{} replicas share only $K$.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{state.pdf}
-\caption{Proxy linkage state (a) and replica recovery time (b).}
+\caption{Persistent linkage state held by the proxy (a) and bootstrap time of a new proxy replica (b) versus the number of records.}
 \label{fig:state}
 \end{figure}
 
-\subsection{Local performance}
+\subsection{Performance Analysis}
 Table~\ref{tab:local} reports ingestion throughput and query latency on loopback, each value being the median of three instances. Dropping the map did not slow \sys{} down measurably: it \LocalSlowerClause{} map split on any workload and is up to \LocalFaster{} faster on joins. It also ingests faster, at \IngZS{} records/s against \IngMap{}, because \sys{} computes the three handles of a batch in one AES call while map split has to generate three random keys per record and insert them into its index. The two DET designs are the fastest systems on conjunctive queries, as a single provider evaluates the complete predicate. That provider, however, holds the equality tags of all QIs side by side and can therefore compute joint frequencies, which is precisely what splitting is meant to keep from a provider \cite{naveed2015inference}. Homomorphic aggregation hides the measure from the provider, but for an aggregate over many rows such as Q3 the provider must multiply thousands of 4096-bit ciphertexts, and it is slower than the split systems. Paillier ingestion reaches \IngPaillier{} records/s, \PaillierSlowdown{} slower than \sys{}. 3PC-RSS evaluates bit-sliced circuits at memory bandwidth, which on a single host makes it faster than \sys{} for broad aggregates (Q4: \MPCLocalQfour{} vs.\ \ZSLocalQfour{}). Its running time is proportional to $N$ and independent of selectivity, though, so a point lookup at $10^6$ records takes \MPCLookupMillion{} where \sys{} needs \ZSLookupMillion{}. At $10^6$ records \sys{} ingests the data in \MillionIngZS{} and answers Q4 in \MillionQfourZS{}, and the AEAD scan needs \MillionScan{} per query. The anonymized releases are fast to query, but their answers contain errors. Over 1,000 random queries, the median error of \texttt{COUNT} at $k=5$ is \UtilMdavFive{} with MDAV and \UtilMondFive{} with Mondrian, and at $k=50$, \UtilMondTail{} of the Mondrian answers are off by more than 10\%. The split systems return exact answers and reveal the marginal distributions of the QIs stored in clear.
 
 \begin{table}[t]
 \centering
-\caption{Ingestion throughput and median latency (ms), loopback, $N=45{,}222$.}
+\caption{Ingestion throughput (records/s) and median query latency (ms) of all systems on the Adult data set ($N=45{,}222$) over the loopback interface.}
 \label{tab:local}
 \scriptsize
 \setlength{\tabcolsep}{2.4pt}
 \input{generated/tab_local}
 \end{table}
 
-\subsection{C3: Selectivity ordering and wide-area execution}\label{sec:wan}
+\subsection{Wide-Area Performance}\label{sec:wan}
 We look at the amount of data first. Pushdown transfers \PDKBQfour{} per query for Q4 and broadcast \BCKBQfour{}; for Q5 the figures are \PDKBQfive{} and \BCKBQfive{}. Because it forwards only the smallest candidate set, pushdown sends \PDSaveQfour{} and \PDSaveQfive{} less. Whether this makes up for the extra round trips depends on the link. Fig.~\ref{fig:wan} varies the RTT from 1 to 50\,ms at link rates of 100\,Mb/s and 1\,Gb/s. The curve labelled ZS-PRISM is the adaptive executor, and pushdown and broadcast are the same system restricted to one plan. Each fixed plan wins in part of the range. Pushdown is ahead at small RTTs, the more so on the slower link (Q4, 100\,Mb/s, 1\,ms: \WanPDlow{} vs.\ \WanBClow{}), and broadcast is ahead at large RTTs (Q4, 1\,Gb/s, 50\,ms: \WanBChigh{} vs.\ \WanPDhigh{}). We compared the adaptive executor with the better fixed plan for every combination of RTT, rate and query among Q3--Q5. It is faster or at most 5\% slower in \WanAutoBestFrac{} cases, and its largest disadvantage is \WanRegretMax{}. Q5 contains one very selective predicate, and here the adaptive executor is \WanAdaptiveWin{} faster than both fixed plans at 100\,Mb/s and 10\,ms: the small results come back with the probe, and only the large one is completed by pushdown. Shared-TID splitting and \sys{} differ by \WanSharedDiff{} in the median, so the time spent deriving handles hardly matters. Map split is up to \WanMapWorse{} slower, because its translation costs more and the planner then picks a different plan. The single-provider designs finish a query in one round trip and are therefore the fastest for selective queries at high RTT. The AEAD scan must transfer the encrypted table and takes \WanScan{} per query. 3PC-RSS needs \MPCRounds{} rounds for Q4, which at 10\,ms comes to \MPCQfourTen{}, against \ZSQfourTen{} for \sys{}.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{wan.pdf}
-\caption{Median latency under emulated wide-area links (log scales).}
+\caption{Median latency of queries Q3--Q5 versus round-trip time at link rates of 100\,Mb/s and 1\,Gb/s under emulated wide-area links (log scales).}
 \label{fig:wan}
 \end{figure*}
 
-\subsection{Second data set: Census-Income}
+\subsection{Census-Income Data Set}
 We repeated the comparison on the 299,285 Census records (Table~\ref{tab:census}) with queries analogous to Q1--Q5. The column ``Rand.'' gives the median latency of 200 random queries, and all answers were verified. On loopback, \sys{} \CensusSlowerClause{} map split on any workload and is up to \CensusFaster{} faster on joins. DET+AEAD, which stores all equality tags at one provider, is again the fastest system on one host for selective queries, and 3PC-RSS is the fastest for the broad range aggregate Q3. At an RTT of 10\,ms, 3PC-RSS is held back by its rounds and the AEAD scan by having to transfer all records. The systems rank in the same order as on Adult.
 
 \begin{table}[t]
 \centering
-\caption{Census-Income ($N=299{,}285$): median latency (ms).}
+\caption{Median query latency (ms) on the Census-Income data set ($N=299{,}285$) over loopback and over an emulated 10\,ms, 100\,Mb/s link. Rand.: median over 200 random conjunctive queries.}
 \label{tab:census}
 \scriptsize
 \setlength{\tabcolsep}{2.2pt}
 \input{generated/tab_census}
 \end{table}
 
-\subsection{Comparison with recent systems}\label{sec:sota}
-\textbf{SecretFlow-SCQL, measured.} For Table~\ref{tab:scql} we loaded the same records into SCQL and into the split designs and ran the same queries on both. The network follows the WAN setting of the SCQL paper, 100\,Mb/s with an RTT of 20\,ms; between the SCQL engines we measured \ScqlRtt{}. Q4 and Q5 are conjunctions that span both parties, and \sys{} answers them \ScqlSpeedupMin{}--\ScqlSpeedupMax{} faster than SCQL. Q4 takes \ZSQfourWanA{} against \ScqlQfourWanA{} on Adult, and \EightZSQfourWan{} against \ScqlQfourWanM{} at $10^6$ records. With no network delay SCQL needs \ScqlQfourLocA{} and \ScqlQfourLocM{} for Q4. Q3 goes the other way. In SCQL the party that stores \texttt{age} also stores \texttt{hours} in clear and can answer Q3 on its own, in \ScqlQthreeWanM{} at $10^6$ records. In \sys{} no provider has the measure (C2), so the proxy must fetch shares from two providers over the WAN, and Q3 takes \ZSQthreeWanM{}. The two systems also protect different things. Under the CCL we configured, the other party in SCQL learns join keys and the outcomes of predicates but not the measure. A \sys{} provider learns its own columns and its query traces, and neither the identifier nor the measure.
+\subsection{Comparison with Recent Systems}\label{sec:sota}
+\textbf{SecretFlow-SCQL.} For Table~\ref{tab:scql} we loaded the same records into SCQL and into the split designs and ran the same queries on both. The network follows the WAN setting of the SCQL paper, 100\,Mb/s with an RTT of 20\,ms; between the SCQL engines we measured \ScqlRtt{}. Q4 and Q5 are conjunctions that span both parties, and \sys{} answers them \ScqlSpeedupMinNum{} to \ScqlSpeedupMaxNum{} times faster than SCQL. Q4 takes \ZSQfourWanA{} against \ScqlQfourWanA{} on Adult, and \EightZSQfourWan{} against \ScqlQfourWanM{} at $10^6$ records. With no network delay SCQL needs \ScqlQfourLocA{} and \ScqlQfourLocM{} for Q4. Q3 goes the other way. In SCQL the party that stores \texttt{age} also stores \texttt{hours} in clear and can answer Q3 on its own, in \ScqlQthreeWanM{} at $10^6$ records. In \sys{} no provider has the measure (C2), so the proxy must fetch shares from two providers over the WAN, and Q3 takes \ZSQthreeWanM{}. The two systems also protect different things. Under the CCL we configured, the other party in SCQL learns join keys and the outcomes of predicates but not the measure. A \sys{} provider learns its own columns and its query traces, and neither the identifier nor the measure.
 
 \begin{table}[t]
 \centering
-\caption{SecretFlow-SCQL versus split designs: median latency (ms), 100\,Mb/s, 20\,ms RTT.}
+\caption{Median query latency (ms) of SecretFlow-SCQL and the split designs on Adult and on $10^6$ records over an emulated 100\,Mb/s link with 20\,ms RTT.}
 \label{tab:scql}
 \scriptsize
 \setlength{\tabcolsep}{3pt}
@@ -331,10 +326,10 @@ We repeated the comparison on the 299,285 Census records (Table~\ref{tab:census}
 
 \textbf{Published results.} The authors of S$^2$ report about 1.5\,s for a conjunctive search over $10^6$ rows within one AWS region, including retrieval of the rows \cite{sharma2023s2}. On a comparable link of 1\,Gb/s and 1\,ms, \sys{} takes \EightZSQfourLan{} for Q4. HE$^3$DB is reported to need 241\,s for a single TPC-H query over $10^4$ rows \cite{bian2023he3db}. Queries and hardware differ from ours, so these numbers indicate orders of magnitude only. Both systems also give stronger guarantees than \sys{}: S$^2$ reveals neither which rows match nor how many, and under FHE the server learns nothing.
 
-\subsection{C2: Writes with dual-share refresh}
+\subsection{Update Performance}
 An update writes the two new shares in parallel, and the differential tests check the answers after every update. On loopback, an update, a deletion and the insertion of one record take \WriteZS{}\,ms in \sys{}. The other split designs take the same time, so refreshing the second share adds no round trip. At 10\,ms RTT the three operations take two, two and one round trips. An update in DET+Paillier takes \WritePaillier{}\,ms because the new value has to be encrypted.
 
-\subsection{What \sys{} does not hide: collusion attacks}\label{sec:attacks}
+\subsection{Collusion Attacks}\label{sec:attacks}
 \textbf{Snapshots.} In the first attack, $S_0$ and $S_2$ pool their complete tables. Under Shared-TID splitting an equality join links \SnapShared{} of the records. Under \sys{} and map split the join links \SnapZS{}, and aligning the two tables by storage order links \SnapRankZS{}, in agreement with Proposition~1. The share holders $S_0$ and $S_1$ are a different matter. In every split system they can test whether $s_0+s_1\bmod q\in[1,99]$, which takes $O(N\log N)$ time and links \SnapShareSum{} of the records. The measure is therefore protected only as long as these two providers do not collude.
 
 \textbf{Query traces.} A provider also sees the handles in its requests and replies. Within a query, every candidate list consists of rows from earlier results. Two colluding providers can collect these constraints over many queries and intersect them. We ran this intersection attack on Adult against 1,000 target records, using up to 1,000 random queries (Fig.~\ref{fig:attack}). Panel (a) shows the number of targets for which exactly one partner remains, and panel (b) the median number of remaining candidate partners; the dotted line at $N=45{,}222$ marks an attacker who has learned nothing. Pushdown passes candidate lists from provider to provider. Under this plan the colluding pairs $S_0+S_2$ and $S_1+S_2$ link \TraceLinkedPD{} of the targets exactly, and the median candidate set shrinks from 45,222 to \TraceSetPD{}. Under broadcast the providers return results and receive no candidates. Then \TraceBCClause{}, and the median candidate set stays at \TraceSetBC{}. An operator can thus lower the trace leakage by enforcing broadcast, at the latencies shown in Fig.~\ref{fig:wan}. Removing it entirely would take ORAM \cite{stefanov2013path}, secret sharing that hides access patterns \cite{sharma2023s2}, or MPC \cite{liagouris2023secrecy}.
@@ -342,7 +337,7 @@ An update writes the two new shares in parallel, and the differential tests chec
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{attack.pdf}
-\caption{Query-trace intersection attack by two colluding providers.}
+\caption{Query-trace intersection attack by two colluding providers on Adult: (a) targets linked exactly and (b) median candidate-set size versus the number of observed queries.}
 \label{fig:attack}
 \end{figure}
 

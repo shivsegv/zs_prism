@@ -30,7 +30,7 @@ This repository holds the paper and the code that produced every number, table a
 cd artifact
 python3.12 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt
-python -m unittest discover -s tests -v    # 13 tests, about 1 minute
+python -m unittest discover -s tests -v    # 14 tests, about 1 minute
 ./run_all.sh                               # downloads data, runs all experiments, rebuilds the paper (about 3 h on an Apple M4)
 ```
 

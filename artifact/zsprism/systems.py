@@ -235,6 +235,7 @@ class SplitSystem:
         self.alpha_provider = 0.5e-6
         self._rtt = 1e-3               # running RTT estimate (soft state)
         self.last_plan: List = []
+        self.last_rids = None
         for i, ddl in enumerate(SCHEMA):
             self.c.p[i].script(ddl)
 
@@ -320,6 +321,7 @@ class SplitSystem:
         if len(stores) == 1 and not need_sum:
             w, p = _where(by_store[stores[0]])
             self.last_plan = ["local"]
+            self.last_rids = None
             return (self.c.p[stores[0]].execute(f"SELECT COUNT(*) FROM t WHERE {w}", p)[0][0], None)
 
         shares: Dict[int, tuple] = {}
@@ -369,6 +371,7 @@ class SplitSystem:
         else:
             cand = self._adaptive(stores, by_store, need_sum, stage_sql, absorb, pushdown, fetch_all, ncol)
 
+        self.last_rids = cand          # selected row set, kept for the row-level tests
         count = len(cand)
         if not need_sum:
             return (count, None)

@@ -151,6 +151,7 @@ def main():
         m[f"PDKB{tag}"] = f"{pdb / 1e3:.0f}\\,kB"
         m[f"BCKB{tag}"] = f"{bcb / 1e3:.0f}\\,kB"
         m[f"PDSave{tag}"] = f"{bcb / pdb:.1f}$\\times$"
+        m[f"PDSave{tag}Num"] = f"{bcb / pdb:.1f}"
     mq, zq = wan("3PC-RSS", 100.0, 10.0, "Q4 conj-avg"), wan("ZS-PRISM", 100.0, 10.0, "Q4 conj-avg")
     m["MPCQfourTen"], m["ZSQfourTen"] = ms(mq), ms(zq)
     m["MPCSpeedup"] = f"{mq / zq:.1f}$\\times$"
@@ -216,6 +217,8 @@ def main():
               for n in (nA, BIG) for w in ("Q4 conj-avg", "Q5 conj-sel")]
     m["ScqlSpeedupMin"] = f"{min(ratios):.1f}$\\times$"
     m["ScqlSpeedupMax"] = f"{max(ratios):.1f}$\\times$"
+    m["ScqlSpeedupMinNum"] = f"{min(ratios):.1f}"
+    m["ScqlSpeedupMaxNum"] = f"{max(ratios):.1f}"
 
     def cell(v):
         return f"{v:.0f}" if v >= 100 else f"{v:.1f}"

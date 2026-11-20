@@ -41,7 +41,7 @@ def main():
             for wname, q in wl.items():
                 lat, traffic, plan = time_query(system, cl, q, recs, reps, warmup=1)
                 row["workloads"][wname] = {**summary(lat), "traffic": traffic, "plan": plan}
-            if name != "AEAD scan" or not rtt:
+            if True:
                 import time
                 lat = []
                 for q, t in zip(rq, truth):

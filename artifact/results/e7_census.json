@@ -823,6 +823,22 @@
      },
      "plan": null
     }
+   },
+   "random": {
+    "median": 3828.8145834812894,
+    "p90": 3868.1528749875724,
+    "n": 200
+   },
+   "random_env": {
+    "cpu": "Apple M4",
+    "mem_gib": 24.0,
+    "os": "macOS-27.0.1-arm64-arm-64bit",
+    "python": "3.12.16",
+    "sqlite": "3.53.1",
+    "cryptography": "50.0.2",
+    "phe": "1.5.0",
+    "numpy": "2.0.2",
+    "msgpack": "1.1.2"
    }
   },
   {
